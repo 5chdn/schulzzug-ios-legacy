@@ -19,7 +19,10 @@
     
     
     
-    self.railsNode = [RailsNode node];
+    self.railsNode = [[RailsNode alloc] initWithColor:[UIColor colorWithRed:89.f/255.f green:115.f/255.f blue:49.f/255.f alpha:1.f] size:view.frame.size];
+    self.railsNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
+    
+    
     
     [self addChild:self.railsNode];
 }

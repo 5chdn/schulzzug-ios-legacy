@@ -29,6 +29,10 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    self.spriteKitView.showsDrawCount = YES;
+    self.spriteKitView.showsNodeCount = YES;
+    self.spriteKitView.showsFPS = YES;
+    
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
