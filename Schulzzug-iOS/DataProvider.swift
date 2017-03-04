@@ -10,17 +10,44 @@ import Foundation
 import Alamofire
 import KeychainAccess
 
+struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializable {
+    let username: String
+    let score: Int
+    
+    init?(response: HTTPURLResponse, representation: Any) {
+        guard
+            let representation = representation as? [String: Any],
+            let username = representation["user"] as? String,
+            let score = representation["score"] as? Int
+        else { return nil }
+        self.username = username
+        self.score = score
+    }
+}
 
 class DataProvider {
+    static let `default` = DataProvider()
+    
     fileprivate let keychain = Keychain(service: "Schulzzug")
     
-    func register() {
-        Alamofire.request(Router.register).responseJSON { [weak self] (response) in
+    func register(username: String) {
+        let parameters = [
+            "user": username
+        ]
+        let route = Router.register(parameters)
+        Alamofire.request(route).responseJSON { [weak self] (response) in
             guard let `self` = self,
                 let json = response.result.value as? [String: Any],
                 let token = json["token"] as? String else { return }
             
             self.keychain["token"] = token
+        }
+    }
+    
+    func fetchScores(_ completion: @escaping (Result<[LeaderboardItem]>) -> ()) {
+        let route = Router.fetchScore
+        Alamofire.request(route).responseCollection { (response: DataResponse<[LeaderboardItem]>) in
+            completion(response.result)
         }
     }
 }
