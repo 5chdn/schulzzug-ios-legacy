@@ -10,6 +10,9 @@
 		83B958731E6B1F1900B72434 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958721E6B1F1900B72434 /* Game.swift */; };
 		83B958751E6B21B000B72434 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958741E6B21B000B72434 /* Level.swift */; };
 		83B9587A1E6B42F300B72434 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B958791E6B42F300B72434 /* Alamofire.framework */; };
+		83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9587C1E6B436000B72434 /* DataProvider.swift */; };
+		83B9587F1E6B456700B72434 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9587E1E6B456700B72434 /* Router.swift */; };
+		83B958811E6B46E200B72434 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B958801E6B46E200B72434 /* KeychainAccess.framework */; };
 		863A53451E6B0D7C00D89F24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53441E6B0D7C00D89F24 /* main.m */; };
 		863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53471E6B0D7C00D89F24 /* AppDelegate.m */; };
 		863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A534A1E6B0D7C00D89F24 /* ViewController.m */; };
@@ -48,6 +51,9 @@
 		83B958741E6B21B000B72434 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		83B958771E6B42E300B72434 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Alamofire; path = Carthage/Build/iOS/Alamofire.framework/Alamofire; sourceTree = "<group>"; };
 		83B958791E6B42F300B72434 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		83B9587C1E6B436000B72434 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		83B9587E1E6B456700B72434 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		83B958801E6B46E200B72434 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		863A53401E6B0D7C00D89F24 /* Schulzzug-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schulzzug-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A53441E6B0D7C00D89F24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		863A53461E6B0D7C00D89F24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B958811E6B46E200B72434 /* KeychainAccess.framework in Frameworks */,
 				83B9587A1E6B42F300B72434 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +112,7 @@
 		83B958761E6B42E300B72434 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83B958801E6B46E200B72434 /* KeychainAccess.framework */,
 				83B958791E6B42F300B72434 /* Alamofire.framework */,
 				83B958771E6B42E300B72434 /* Alamofire */,
 			);
@@ -157,6 +165,8 @@
 				83B958721E6B1F1900B72434 /* Game.swift */,
 				83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */,
 				83B958741E6B21B000B72434 /* Level.swift */,
+				83B9587E1E6B456700B72434 /* Router.swift */,
+				83B9587C1E6B436000B72434 /* DataProvider.swift */,
 			);
 			path = "Schulzzug-iOS";
 			sourceTree = "<group>";
@@ -328,6 +338,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			name = "Copy Frameworks";
 			outputPaths = (
@@ -347,7 +358,9 @@
 				83B958751E6B21B000B72434 /* Level.swift in Sources */,
 				863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */,
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
+				83B9587F1E6B456700B72434 /* Router.swift in Sources */,
 				863A538A1E6B1FD300D89F24 /* ChulzTrainNode.m in Sources */,
+				83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */,
 				863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */,
 				863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */,
 				863A53841E6B1FB200D89F24 /* RailsNode.m in Sources */,
