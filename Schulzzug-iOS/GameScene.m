@@ -16,6 +16,12 @@
     self.backgroundColor = [SKColor colorWithRed:245.f/255.f green:0.f blue:0.f alpha:1.0];
     
     self.scaleMode = SKSceneScaleModeAspectFit;
+    
+    
+    
+    self.railsNode = [RailsNode node];
+    
+    [self addChild:self.railsNode];
 }
 
 @end

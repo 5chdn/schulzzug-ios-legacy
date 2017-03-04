@@ -7,8 +7,16 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "RailsNode.h"
+#import "ChulzTrainNode.h"
+#import "BackgroundParallax.h"
 
 @interface GameScene : SKScene
+
+@property(nonatomic, strong) RailsNode* railsNode;
+@property(nonatomic, strong) ChulzTrainNode* chulzTrainNode;
+@property(nonatomic, strong) BackgroundParallax* backgroundParallax;
+
 
 
 
