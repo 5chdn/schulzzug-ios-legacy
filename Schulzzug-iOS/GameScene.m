@@ -19,9 +19,17 @@
     
     self.scaleMode = SKSceneScaleModeAspectFit;
     
-    self.railsNode = [[RailsNode alloc] initWithColor:[UIColor colorWithRed:89.f/255.f green:115.f/255.f blue:49.f/255.f alpha:1.f] size:view.frame.size];
+    
+    SKTexture* railsTexture = [SKTexture textureWithImageNamed:@"rails_1"];
+    self.railsNode = [SKSpriteNode spriteNodeWithTexture:railsTexture];
     self.railsNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
     [self addChild:self.railsNode];
+    
+    NSArray <SKTexture*>* railTextures = @[[SKTexture textureWithImageNamed:@"rails_1"],
+                     [SKTexture textureWithImageNamed:@"rails_2"]];
+    
+    SKAction* railsAnimation = [SKAction animateWithTextures:railTextures timePerFrame:0.1];
+    [self.railsNode runAction:[SKAction repeatActionForever:railsAnimation]];
     
     SKTexture* startTexture = [SKTexture textureWithImageNamed:@"chulzzug"];
     

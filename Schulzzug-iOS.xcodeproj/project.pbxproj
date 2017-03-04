@@ -27,7 +27,6 @@
 		863A53691E6B0D7C00D89F24 /* Schulzzug_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53681E6B0D7C00D89F24 /* Schulzzug_iOSUITests.m */; };
 		863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53771E6B0F9B00D89F24 /* GameViewController.m */; };
 		863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A537D1E6B1A2900D89F24 /* GameScene.m */; };
-		863A53841E6B1FB200D89F24 /* RailsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53831E6B1FB200D89F24 /* RailsNode.m */; };
 		863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A538C1E6B201100D89F24 /* BackgroundParallax.m */; };
 /* End PBXBuildFile section */
 
@@ -82,8 +81,6 @@
 		863A53771E6B0F9B00D89F24 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		863A537C1E6B1A2900D89F24 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		863A537D1E6B1A2900D89F24 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		863A53821E6B1FB200D89F24 /* RailsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailsNode.h; sourceTree = "<group>"; };
-		863A53831E6B1FB200D89F24 /* RailsNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RailsNode.m; sourceTree = "<group>"; };
 		863A538B1E6B201100D89F24 /* BackgroundParallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundParallax.h; sourceTree = "<group>"; };
 		863A538C1E6B201100D89F24 /* BackgroundParallax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundParallax.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,8 +154,6 @@
 				863A53771E6B0F9B00D89F24 /* GameViewController.m */,
 				863A537C1E6B1A2900D89F24 /* GameScene.h */,
 				863A537D1E6B1A2900D89F24 /* GameScene.m */,
-				863A53821E6B1FB200D89F24 /* RailsNode.h */,
-				863A53831E6B1FB200D89F24 /* RailsNode.m */,
 				83B958881E6B61C000B72434 /* CoinNode.h */,
 				83B958891E6B61C000B72434 /* CoinNode.m */,
 				863A538B1E6B201100D89F24 /* BackgroundParallax.h */,
@@ -274,7 +269,7 @@
 				TargetAttributes = {
 					863A533F1E6B0D7C00D89F24 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7Y8726KJ5P;
+						DevelopmentTeam = 52U6XAJSSF;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -375,7 +370,6 @@
 				83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */,
 				863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */,
 				863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */,
-				863A53841E6B1FB200D89F24 /* RailsNode.m in Sources */,
 				863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */,
 				863A53451E6B0D7C00D89F24 /* main.m in Sources */,
 			);
@@ -527,7 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 7Y8726KJ5P;
+				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -551,7 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 7Y8726KJ5P;
+				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

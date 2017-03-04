@@ -7,12 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "RailsNode.h"
 #import "BackgroundParallax.h"
 
 @interface GameScene : SKScene
 
-@property(nonatomic, strong) RailsNode* railsNode;
+@property(nonatomic, strong) SKSpriteNode* railsNode;
 @property(nonatomic, strong) SKSpriteNode* chulzTrainNode;
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
 
