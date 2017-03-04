@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="-953" y="37"/>
         </scene>
-        <!--Leaderboard View Controller-->
+        <!--Bestenliste-->
         <scene sceneID="E0R-4s-Vsf">
             <objects>
-                <tableViewController id="RZZ-3b-4fy" customClass="LeaderboardViewController" customModule="Schulzzug_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Bestenliste" id="RZZ-3b-4fy" customClass="LeaderboardViewController" customModule="Schulzzug_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lLG-wx-Sgw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
