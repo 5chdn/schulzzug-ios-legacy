@@ -23,6 +23,8 @@
         
         SKAction* railsAnimation = [SKAction animateWithTextures:coinTextures timePerFrame:0.1];
         [self runAction:[SKAction repeatActionForever:railsAnimation]];
+        
+        
     }
     
     return self;

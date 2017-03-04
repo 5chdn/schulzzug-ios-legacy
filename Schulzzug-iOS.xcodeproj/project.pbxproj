@@ -159,6 +159,8 @@
 				863A537D1E6B1A2900D89F24 /* GameScene.m */,
 				863A53821E6B1FB200D89F24 /* RailsNode.h */,
 				863A53831E6B1FB200D89F24 /* RailsNode.m */,
+				83B958881E6B61C000B72434 /* CoinNode.h */,
+				83B958891E6B61C000B72434 /* CoinNode.m */,
 				863A538B1E6B201100D89F24 /* BackgroundParallax.h */,
 				863A538C1E6B201100D89F24 /* BackgroundParallax.m */,
 				863A534C1E6B0D7C00D89F24 /* Main.storyboard */,
@@ -174,8 +176,6 @@
 				83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */,
 				83B958821E6B4B4700B72434 /* LeaderboardViewController.swift */,
 				83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */,
-				83B958881E6B61C000B72434 /* CoinNode.h */,
-				83B958891E6B61C000B72434 /* CoinNode.m */,
 			);
 			path = "Schulzzug-iOS";
 			sourceTree = "<group>";

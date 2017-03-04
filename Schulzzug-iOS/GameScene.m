@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "CoinNode.h"
 
 @implementation GameScene
 
@@ -31,6 +32,10 @@
     self.chulzTrainNode.position = CGPointMake(view.frame.size.width/2, 150);
     [self addChild:self.chulzTrainNode];
     
+    
+    CoinNode* coinNode = [CoinNode new];
+    coinNode.position = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+    [self addChild:coinNode];
     
 }
 

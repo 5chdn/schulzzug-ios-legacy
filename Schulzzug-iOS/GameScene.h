@@ -17,6 +17,7 @@
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
 
 
+
 -(void) jumpRight;
 -(void) jumpLeft;
 
