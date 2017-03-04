@@ -16,6 +16,7 @@
 		83B958831E6B4B4700B72434 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958821E6B4B4700B72434 /* LeaderboardViewController.swift */; };
 		83B958851E6B509A00B72434 /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */; };
 		83B958871E6B540200B72434 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */; };
+		83B9588A1E6B61C000B72434 /* CoinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B958891E6B61C000B72434 /* CoinNode.m */; };
 		863A53451E6B0D7C00D89F24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53441E6B0D7C00D89F24 /* main.m */; };
 		863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53471E6B0D7C00D89F24 /* AppDelegate.m */; };
 		863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A534A1E6B0D7C00D89F24 /* ViewController.m */; };
@@ -60,6 +61,8 @@
 		83B958821E6B4B4700B72434 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseObjectSerializable.swift; sourceTree = "<group>"; };
 		83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		83B958881E6B61C000B72434 /* CoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinNode.h; sourceTree = "<group>"; };
+		83B958891E6B61C000B72434 /* CoinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinNode.m; sourceTree = "<group>"; };
 		863A53401E6B0D7C00D89F24 /* Schulzzug-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schulzzug-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A53441E6B0D7C00D89F24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		863A53461E6B0D7C00D89F24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 				83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */,
 				83B958821E6B4B4700B72434 /* LeaderboardViewController.swift */,
 				83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */,
+				83B958881E6B61C000B72434 /* CoinNode.h */,
+				83B958891E6B61C000B72434 /* CoinNode.m */,
 			);
 			path = "Schulzzug-iOS";
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				83B958751E6B21B000B72434 /* Level.swift in Sources */,
 				83B958831E6B4B4700B72434 /* LeaderboardViewController.swift in Sources */,
 				863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */,
+				83B9588A1E6B61C000B72434 /* CoinNode.m in Sources */,
 				83B958871E6B540200B72434 /* UIAlertControllerExtension.swift in Sources */,
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
 				83B9587F1E6B456700B72434 /* Router.swift in Sources */,
