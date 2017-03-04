@@ -30,7 +30,7 @@ class DataProvider {
     
     fileprivate let keychain = Keychain(service: "Schulzzug")
     
-    func register(username: String) {A
+    func register(username: String) {
         let parameters = [
             "user": username
         ]
