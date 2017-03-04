@@ -28,12 +28,11 @@
                                 <rect key="frame" x="148" y="617" width="78" height="30"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
-                                    <segue destination="fxy-Vu-tjA" kind="show" id="n2d-Xt-tdI"/>
+                                    <segue destination="fxy-Vu-tjA" kind="presentation" id="n2d-Xt-tdI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-KS-4j9">
-                                <rect key="frame" x="129" y="397" width="116" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-KS-4j9">
+                                <rect key="frame" x="143.5" y="318.5" width="87" height="30"/>
                                 <state key="normal" title="Leaderboard"/>
                                 <connections>
                                     <segue destination="RZZ-3b-4fy" kind="show" id="H7H-Zl-gz0"/>
@@ -43,8 +42,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WZI-ez-zrX" firstAttribute="centerX" secondItem="0pz-oy-N1D" secondAttribute="centerX" id="1zh-Aa-oRv"/>
+                            <constraint firstItem="sPn-KS-4j9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FhS-A0-h2C"/>
                             <constraint firstItem="WZI-ez-zrX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="S55-v5-1ge"/>
                             <constraint firstAttribute="bottom" secondItem="0pz-oy-N1D" secondAttribute="bottom" constant="20" symbolic="YES" id="T6K-V0-MEa"/>
+                            <constraint firstItem="sPn-KS-4j9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UPO-1q-eOY"/>
                             <constraint firstItem="WZI-ez-zrX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eKw-ao-UW0"/>
                             <constraint firstAttribute="trailing" secondItem="WZI-ez-zrX" secondAttribute="trailing" id="egP-mw-EGO"/>
                             <constraint firstItem="WZI-ez-zrX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qBG-b5-FCA"/>

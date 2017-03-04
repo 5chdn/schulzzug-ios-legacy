@@ -19,20 +19,22 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)viewWillAppear:(BOOL)animated {
     self.gameScene = [[GameScene alloc] initWithSize:self.spriteKitView.frame.size];
     
     [self.spriteKitView presentScene:self.gameScene];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
     self.spriteKitView.showsDrawCount = YES;
     self.spriteKitView.showsNodeCount = YES;
     self.spriteKitView.showsFPS = YES;
     
-    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 - (IBAction)swipeRight:(id)sender {
     [self.gameScene jumpRight];
