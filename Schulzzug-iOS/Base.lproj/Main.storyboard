@@ -76,6 +76,8 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="QCR-s4-JDg" appends="YES" id="ciN-Xy-adA"/>
                                     <outletCollection property="gestureRecognizers" destination="DNE-qL-WOW" appends="YES" id="S4Q-qk-dAd"/>
+                                    <outletCollection property="gestureRecognizers" destination="AtR-mq-FRi" appends="YES" id="TgF-6b-3bX"/>
+                                    <outletCollection property="gestureRecognizers" destination="vex-rH-rhp" appends="YES" id="rMg-fu-fkJ"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -100,6 +102,16 @@
                 <swipeGestureRecognizer direction="left" id="DNE-qL-WOW">
                     <connections>
                         <action selector="swipeLeft:" destination="fxy-Vu-tjA" id="hIw-1O-Kxf"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="AtR-mq-FRi">
+                    <connections>
+                        <action selector="tap:" destination="fxy-Vu-tjA" id="03u-ya-L7T"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="vex-rH-rhp">
+                    <connections>
+                        <action selector="tap:" destination="fxy-Vu-tjA" id="Xbd-18-8OZ"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

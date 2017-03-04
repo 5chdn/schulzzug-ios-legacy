@@ -19,8 +19,7 @@
     
     self.scaleMode = SKSceneScaleModeAspectFit;
     
-    self.physicsWorld.gravity = CGVectorMake(0, -6);
-    self.physicsBody.affectedByGravity = NO;
+    self.physicsWorld.gravity = CGVectorMake(0, -2);
     
     
     
@@ -42,14 +41,12 @@
     self.chulzTrainNode.position = CGPointMake(view.frame.size.width/2, 150);
     [self addChild:self.chulzTrainNode];
     
-    SKPhysicsBody* chulzTrainBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(startTexture.size.width, startTexture.size.height)];
+    SKPhysicsBody* chulzTrainBody = [SKPhysicsBody bodyWithCircleOfRadius:startTexture.size.height];
     chulzTrainBody.dynamic = YES;
     chulzTrainBody.allowsRotation = NO;
     
     
-    
     self.chulzTrainNode.physicsBody = chulzTrainBody;
-    self.chulzTrainNode.physicsBody.affectedByGravity = YES;
     
     
     
@@ -61,13 +58,31 @@
 }
 
 -(void) jumpRight {
-    
-    [self.chulzTrainNode.physicsBody applyImpulse:CGVectorMake(400, 500)];
-    
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0, 0)];
+    [bezierPath addCurveToPoint: CGPointMake(100, 0) controlPoint1: CGPointMake(0, 0) controlPoint2: CGPointMake(50, 100)];
+    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
+    [self.chulzTrainNode runAction:followSquare];
 }
 
 -(void) jumpLeft {
-    [self.chulzTrainNode.physicsBody applyImpulse:CGVectorMake(-400, 500)];
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0, 0)];
+    [bezierPath addCurveToPoint: CGPointMake(-100, 0) controlPoint1: CGPointMake(0, 0) controlPoint2: CGPointMake(-50, 100)];
+    
+    
+    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
+    [self.chulzTrainNode runAction:followSquare];
+}
+
+-(void) jump {
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0, 0)];
+    [bezierPath addCurveToPoint: CGPointMake(0, 0) controlPoint1: CGPointMake(0, 0) controlPoint2: CGPointMake(0, 100)];
+    
+    
+    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
+    [self.chulzTrainNode runAction:followSquare];
 }
 
 @end

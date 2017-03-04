@@ -20,5 +20,6 @@
 
 -(void) jumpRight;
 -(void) jumpLeft;
+-(void) jump;
 
 @end

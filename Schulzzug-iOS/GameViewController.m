@@ -44,6 +44,10 @@
     [self.gameScene jumpLeft];
 }
 
+- (IBAction)tap:(id)sender {
+    [self.gameScene jump];
+}
+
 -(BOOL)prefersStatusBarHidden {
     return YES;
 }
