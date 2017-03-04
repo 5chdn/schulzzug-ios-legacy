@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83B958731E6B1F1900B72434 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958721E6B1F1900B72434 /* Game.swift */; };
+		83B958751E6B21B000B72434 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958741E6B21B000B72434 /* Level.swift */; };
 		863A53451E6B0D7C00D89F24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53441E6B0D7C00D89F24 /* main.m */; };
 		863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53471E6B0D7C00D89F24 /* AppDelegate.m */; };
 		863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A534A1E6B0D7C00D89F24 /* ViewController.m */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Schulzzug-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		83B958721E6B1F1900B72434 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		83B958741E6B21B000B72434 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		863A53401E6B0D7C00D89F24 /* Schulzzug-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schulzzug-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A53441E6B0D7C00D89F24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		863A53461E6B0D7C00D89F24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +125,9 @@
 				863A53511E6B0D7C00D89F24 /* LaunchScreen.storyboard */,
 				863A53541E6B0D7C00D89F24 /* Info.plist */,
 				863A53431E6B0D7C00D89F24 /* Supporting Files */,
+				83B958721E6B1F1900B72434 /* Game.swift */,
+				83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */,
+				83B958741E6B21B000B72434 /* Level.swift */,
 			);
 			path = "Schulzzug-iOS";
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 					863A533F1E6B0D7C00D89F24 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 52U6XAJSSF;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					863A53581E6B0D7C00D89F24 = {
@@ -286,6 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B958731E6B1F1900B72434 /* Game.swift in Sources */,
+				83B958751E6B21B000B72434 /* Level.swift in Sources */,
 				863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */,
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
 				863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */,
@@ -439,11 +450,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				INFOPLIST_FILE = "Schulzzug-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.frogg.Schulzzug-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Schulzzug-iOS/Schulzzug-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -451,17 +466,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				INFOPLIST_FILE = "Schulzzug-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.frogg.Schulzzug-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Schulzzug-iOS/Schulzzug-iOS-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		863A53711E6B0D7C00D89F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				INFOPLIST_FILE = "Schulzzug-iOSTests/Info.plist";
@@ -475,6 +494,7 @@
 		863A53721E6B0D7C00D89F24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				INFOPLIST_FILE = "Schulzzug-iOSTests/Info.plist";
@@ -488,6 +508,7 @@
 		863A53741E6B0D7C00D89F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				INFOPLIST_FILE = "Schulzzug-iOSUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -500,6 +521,7 @@
 		863A53751E6B0D7C00D89F24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
 				INFOPLIST_FILE = "Schulzzug-iOSUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
