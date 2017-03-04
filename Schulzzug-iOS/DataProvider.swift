@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import KeychainAccess
 
+
 struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializable {
     let username: String
     let score: Int
@@ -24,6 +25,7 @@ struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializab
         self.score = score
     }
 }
+
 
 class DataProvider {
     static let `default` = DataProvider()
