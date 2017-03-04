@@ -28,7 +28,9 @@
     self.gameScene = [[GameScene alloc] initWithSize:self.spriteKitView.frame.size];
     
     [self.spriteKitView presentScene:self.gameScene];
-    
+    self.spriteKitView.showsDrawCount = YES;
+    self.spriteKitView.showsNodeCount = YES;
+    self.spriteKitView.showsFPS = YES;
     
     
 }

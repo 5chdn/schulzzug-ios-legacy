@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ChulzTrainNode : SKNode
+@interface ChulzTrainNode : SKSpriteNode
 
 @end

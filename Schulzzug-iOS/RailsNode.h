@@ -8,8 +8,9 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface RailsNode : SKNode
+@interface RailsNode : SKSpriteNode
 
-@property(strong) SKSpriteNode* rails;
+
+
 
 @end
