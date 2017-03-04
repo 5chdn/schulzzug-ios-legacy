@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		83B958731E6B1F1900B72434 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958721E6B1F1900B72434 /* Game.swift */; };
 		83B958751E6B21B000B72434 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958741E6B21B000B72434 /* Level.swift */; };
+		83B9587A1E6B42F300B72434 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B958791E6B42F300B72434 /* Alamofire.framework */; };
 		863A53451E6B0D7C00D89F24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53441E6B0D7C00D89F24 /* main.m */; };
 		863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53471E6B0D7C00D89F24 /* AppDelegate.m */; };
 		863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A534A1E6B0D7C00D89F24 /* ViewController.m */; };
@@ -45,6 +46,8 @@
 		83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Schulzzug-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		83B958721E6B1F1900B72434 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		83B958741E6B21B000B72434 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		83B958771E6B42E300B72434 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Alamofire; path = Carthage/Build/iOS/Alamofire.framework/Alamofire; sourceTree = "<group>"; };
+		83B958791E6B42F300B72434 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		863A53401E6B0D7C00D89F24 /* Schulzzug-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schulzzug-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A53441E6B0D7C00D89F24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		863A53461E6B0D7C00D89F24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B9587A1E6B42F300B72434 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83B958761E6B42E300B72434 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83B958791E6B42F300B72434 /* Alamofire.framework */,
+				83B958771E6B42E300B72434 /* Alamofire */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		863A53371E6B0D7C00D89F24 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +118,7 @@
 				863A535C1E6B0D7C00D89F24 /* Schulzzug-iOSTests */,
 				863A53671E6B0D7C00D89F24 /* Schulzzug-iOSUITests */,
 				863A53411E6B0D7C00D89F24 /* Products */,
+				83B958761E6B42E300B72434 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +197,7 @@
 				863A533C1E6B0D7C00D89F24 /* Sources */,
 				863A533D1E6B0D7C00D89F24 /* Frameworks */,
 				863A533E1E6B0D7C00D89F24 /* Resources */,
+				83B9587B1E6B430C00B72434 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,6 +319,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83B9587B1E6B430C00B72434 /* Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = "Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		863A533C1E6B0D7C00D89F24 /* Sources */ = {
@@ -470,8 +503,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Schulzzug-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Alamofire.framework",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.frogg.Schulzzug-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Schulzzug-iOS/Schulzzug-iOS-Bridging-Header.h";
@@ -486,8 +527,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 52U6XAJSSF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Schulzzug-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Alamofire.framework",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.frogg.Schulzzug-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Schulzzug-iOS/Schulzzug-iOS-Bridging-Header.h";
