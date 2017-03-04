@@ -30,6 +30,10 @@ class DataProvider {
     
     fileprivate let keychain = Keychain(service: "Schulzzug")
     
+    init() {
+        Router.token = keychain["token"] ?? ""
+    }
+    
     func register(username: String) {
         let parameters = [
             "user": username
@@ -40,7 +44,9 @@ class DataProvider {
                 let json = response.result.value as? [String: Any],
                 let token = json["token"] as? String else { return }
             
+            // Update token in keychain and router
             self.keychain["token"] = token
+            Router.token = token
         }
     }
     

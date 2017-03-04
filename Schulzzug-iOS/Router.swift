@@ -33,6 +33,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
+    static var token: String = ""
     static let baseURLString = "http://51.15.50.238:8080"
     
     func asURLRequest() throws -> URLRequest {
@@ -47,6 +48,8 @@ enum Router: URLRequestConvertible {
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         default: break
         }
+        
+        urlRequest.setValue("Token \(Router.token)", forHTTPHeaderField: "Authorization")
         
         return urlRequest
     }
