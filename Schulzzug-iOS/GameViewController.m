@@ -34,6 +34,14 @@
     
     
 }
+- (IBAction)swipeRight:(id)sender {
+    [self.gameScene jumpRight];
+}
+
+- (IBAction)swipeLeft:(id)sender {
+    [self.gameScene jumpLeft];
+}
+
 
 /*
 #pragma mark - Navigation

@@ -27,7 +27,6 @@
 		863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53771E6B0F9B00D89F24 /* GameViewController.m */; };
 		863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A537D1E6B1A2900D89F24 /* GameScene.m */; };
 		863A53841E6B1FB200D89F24 /* RailsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53831E6B1FB200D89F24 /* RailsNode.m */; };
-		863A538A1E6B1FD300D89F24 /* ChulzTrainNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53891E6B1FD300D89F24 /* ChulzTrainNode.m */; };
 		863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A538C1E6B201100D89F24 /* BackgroundParallax.m */; };
 /* End PBXBuildFile section */
 
@@ -82,8 +81,6 @@
 		863A537D1E6B1A2900D89F24 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		863A53821E6B1FB200D89F24 /* RailsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RailsNode.h; sourceTree = "<group>"; };
 		863A53831E6B1FB200D89F24 /* RailsNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RailsNode.m; sourceTree = "<group>"; };
-		863A53881E6B1FD300D89F24 /* ChulzTrainNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChulzTrainNode.h; sourceTree = "<group>"; };
-		863A53891E6B1FD300D89F24 /* ChulzTrainNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChulzTrainNode.m; sourceTree = "<group>"; };
 		863A538B1E6B201100D89F24 /* BackgroundParallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundParallax.h; sourceTree = "<group>"; };
 		863A538C1E6B201100D89F24 /* BackgroundParallax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundParallax.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,8 +156,6 @@
 				863A537D1E6B1A2900D89F24 /* GameScene.m */,
 				863A53821E6B1FB200D89F24 /* RailsNode.h */,
 				863A53831E6B1FB200D89F24 /* RailsNode.m */,
-				863A53881E6B1FD300D89F24 /* ChulzTrainNode.h */,
-				863A53891E6B1FD300D89F24 /* ChulzTrainNode.m */,
 				863A538B1E6B201100D89F24 /* BackgroundParallax.h */,
 				863A538C1E6B201100D89F24 /* BackgroundParallax.m */,
 				863A534C1E6B0D7C00D89F24 /* Main.storyboard */,
@@ -371,7 +366,6 @@
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
 				83B9587F1E6B456700B72434 /* Router.swift in Sources */,
 				83B958851E6B509A00B72434 /* ResponseObjectSerializable.swift in Sources */,
-				863A538A1E6B1FD300D89F24 /* ChulzTrainNode.m in Sources */,
 				83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */,
 				863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */,
 				863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */,

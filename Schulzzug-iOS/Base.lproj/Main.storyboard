@@ -71,6 +71,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQX-Xo-u6q" customClass="SKView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="QCR-s4-JDg" appends="YES" id="ciN-Xy-adA"/>
+                                    <outletCollection property="gestureRecognizers" destination="DNE-qL-WOW" appends="YES" id="S4Q-qk-dAd"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,6 +91,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgQ-eh-yNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="QCR-s4-JDg">
+                    <connections>
+                        <action selector="swipeRight:" destination="fxy-Vu-tjA" id="ifp-lT-lmh"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="DNE-qL-WOW">
+                    <connections>
+                        <action selector="swipeLeft:" destination="fxy-Vu-tjA" id="hIw-1O-Kxf"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="965.60000000000002" y="36.431784107946029"/>
         </scene>
