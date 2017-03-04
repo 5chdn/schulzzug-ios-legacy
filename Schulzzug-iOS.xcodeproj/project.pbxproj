@@ -15,6 +15,8 @@
 		863A53531E6B0D7C00D89F24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 863A53511E6B0D7C00D89F24 /* LaunchScreen.storyboard */; };
 		863A535E1E6B0D7C00D89F24 /* Schulzzug_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A535D1E6B0D7C00D89F24 /* Schulzzug_iOSTests.m */; };
 		863A53691E6B0D7C00D89F24 /* Schulzzug_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53681E6B0D7C00D89F24 /* Schulzzug_iOSUITests.m */; };
+		863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53771E6B0F9B00D89F24 /* GameViewController.m */; };
+		863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A537D1E6B1A2900D89F24 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		863A53641E6B0D7C00D89F24 /* Schulzzug-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Schulzzug-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A53681E6B0D7C00D89F24 /* Schulzzug_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Schulzzug_iOSUITests.m; sourceTree = "<group>"; };
 		863A536A1E6B0D7C00D89F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		863A53761E6B0F9B00D89F24 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		863A53771E6B0F9B00D89F24 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		863A537C1E6B1A2900D89F24 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		863A537D1E6B1A2900D89F24 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,10 @@
 				863A53471E6B0D7C00D89F24 /* AppDelegate.m */,
 				863A53491E6B0D7C00D89F24 /* ViewController.h */,
 				863A534A1E6B0D7C00D89F24 /* ViewController.m */,
+				863A53761E6B0F9B00D89F24 /* GameViewController.h */,
+				863A53771E6B0F9B00D89F24 /* GameViewController.m */,
+				863A537C1E6B1A2900D89F24 /* GameScene.h */,
+				863A537D1E6B1A2900D89F24 /* GameScene.m */,
 				863A534C1E6B0D7C00D89F24 /* Main.storyboard */,
 				863A534F1E6B0D7C00D89F24 /* Assets.xcassets */,
 				863A53511E6B0D7C00D89F24 /* LaunchScreen.storyboard */,
@@ -276,7 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */,
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
+				863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */,
 				863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */,
 				863A53451E6B0D7C00D89F24 /* main.m in Sources */,
 			);
@@ -516,6 +528,7 @@
 				863A536F1E6B0D7C00D89F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		863A53701E6B0D7C00D89F24 /* Build configuration list for PBXNativeTarget "Schulzzug-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +537,7 @@
 				863A53721E6B0D7C00D89F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		863A53731E6B0D7C00D89F24 /* Build configuration list for PBXNativeTarget "Schulzzug-iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +546,7 @@
 				863A53751E6B0D7C00D89F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
