@@ -13,10 +13,14 @@
 @import SceneKit;
 @import SpriteKit;
 
-@interface GameViewController : UIViewController<GameSceneDelegate>
+@interface GameViewController : UIViewController<GameSceneDelegate> {
+    NSInteger score;
+    NSInteger distance;
+}
 
 @property(strong) GameScene* gameScene;
 @property (strong, nonatomic) IBOutlet SKView *spriteKitView;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
 
 @end

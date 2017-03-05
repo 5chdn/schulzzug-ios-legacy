@@ -13,6 +13,7 @@
 @protocol GameSceneDelegate <NSObject>
 - (void)didCollectCoin;
 - (void)didCrashTrumpWall;
+- (void)didUpdateDistance;
 @end
 
 typedef enum {

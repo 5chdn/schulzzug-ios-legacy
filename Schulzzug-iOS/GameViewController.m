@@ -57,7 +57,13 @@
 }
 
 -(void)didCollectCoin {
-    
+    score += 5;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%i", (int)score];
+}
+
+-(void)didUpdateDistance {
+    distance += 1;
+    self.distanceLabel.text = [NSString stringWithFormat:@"%i", (int)distance];
 }
 
 -(void)didCrashTrumpWall {
