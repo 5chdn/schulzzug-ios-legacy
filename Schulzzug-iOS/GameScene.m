@@ -80,7 +80,7 @@
     SKTexture* texture = [SKTexture textureWithImageNamed:name];
     
     CGFloat spawnX, spawnY, targetX, targetY;
-    spawnY =self.frame.size.height - horizonPosition - 32 - 16;
+    spawnY = self.frame.size.height - horizonPosition - 32 - 16;
     targetY = -50;
     spawnX = 0;
     targetX = 0;
@@ -88,11 +88,11 @@
     if(spawnSide == SpawnSideLeft) {
         spawnX = self.view.frame.size.width/3.5;
         targetX = -150;
-    }
-    
-    if(spawnSide == SpawnSideRight) {
+    } else if(spawnSide == SpawnSideRight) {
         spawnX = self.view.frame.size.width-(self.view.frame.size.width/3.5);
         targetX = self.view.frame.size.width+150;
+    } else {
+        return;
     }
     
     SKSpriteNode* node = [SKSpriteNode spriteNodeWithTexture:texture];
@@ -198,7 +198,6 @@
                                               [SKTexture textureWithImageNamed:@"Train_Right_03"]];
         SKAction* trainAnimation = [SKAction animateWithTextures:zugTextures timePerFrame:0.15];
         [self.chulzTrainNode runAction:[SKAction repeatActionForever:trainAnimation] withKey:@"texture-animation"];
-        
     }
     
 }
@@ -207,7 +206,7 @@
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint: CGPointMake(0, 0)];
     [bezierPath addQuadCurveToPoint:CGPointMake(0, 0) controlPoint:CGPointMake(0, 140)];
-    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
+    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.25];
     followSquare.timingMode = SKActionTimingEaseInEaseOut;
     [self.chulzTrainNode runAction:followSquare];
     

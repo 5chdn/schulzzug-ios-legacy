@@ -19,7 +19,11 @@ typedef enum {
 
 typedef enum {
     SpawnSideLeft,
-    SpawnSideRight
+    SpawnSideRight,
+    SpawnSideLane0,
+    SpawnSideLane1,
+    SpawnSideLane2
+    
 } SpawnSide;
 
 @interface GameScene : SKScene {
