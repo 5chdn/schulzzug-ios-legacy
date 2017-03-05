@@ -36,4 +36,8 @@ import Foundation
     func blockSpawning() {
         
     }
+    
+    static func random(from lower: NSInteger, to upper: NSInteger) -> NSInteger {
+        return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
+    }
 }

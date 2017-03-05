@@ -8,7 +8,7 @@
 
 #import "GameScene.h"
 #import "CoinNode.h"
-
+#import "Schulzzug_iOS-Swift.h"
 
 @implementation GameScene
 
@@ -32,6 +32,8 @@
     [self.railsNode runAction:[SKAction repeatActionForever:railsAnimation]];
     
     
+    
+    coinNodes = [NSMutableArray new];
     
     CoinNode* coinNode = [CoinNode new];
     coinNode.position = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
@@ -57,7 +59,6 @@
                                           [SKTexture textureWithImageNamed:@"Train03"]];
     SKAction* trainAnimation = [SKAction animateWithTextures:zugTextures timePerFrame:0.15];
     [self.chulzTrainNode runAction:[SKAction repeatActionForever:trainAnimation]];
-    
 }
 
 -(void) jumpRight {
@@ -73,9 +74,6 @@
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint: CGPointMake(0, 0)];
     [bezierPath addQuadCurveToPoint:CGPointMake(-140, 0) controlPoint:CGPointMake(-70, 50)];
-    
-    
-    
     SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
     followSquare.timingMode = SKActionTimingEaseInEaseOut;
     [self.chulzTrainNode runAction:followSquare];
@@ -88,6 +86,29 @@
     SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
     followSquare.timingMode = SKActionTimingEaseInEaseOut;
     [self.chulzTrainNode runAction:followSquare];
+}
+
+-(void)update:(NSTimeInterval)currentTime {
+    [super update:currentTime];
+    
+    NSInteger horizonPosition = 400;
+    
+    // Only spawn new object every X steps
+    NSInteger coinSpawnInterval = 5;
+    if ((NSInteger)currentTime % coinSpawnInterval == 0) {
+        NSInteger railIndex = [Game randomFrom:0 to:2];
+        
+        CoinNode *newCoinNode = [CoinNode new];
+        
+        // Calculate initial position and size
+        newCoinNode.position = CGPointMake(40, horizonPosition);
+        
+        // Add to index
+        [self addChild:newCoinNode];
+        [coinNodes addObject:newCoinNode];
+    }
+    
+    
 }
 
 @end
