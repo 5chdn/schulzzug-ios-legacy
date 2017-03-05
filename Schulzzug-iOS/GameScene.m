@@ -379,7 +379,7 @@
         
         node.zPosition = self.frame.size.height - node.frame.origin.y;
         
-        if(node.frame.origin.y > self.frame.size.height) {
+        if(node.frame.origin.y > self.frame.size.height || node.frame.origin.x > self.frame.size.width) {
             [node removeFromParent];
         }
         
