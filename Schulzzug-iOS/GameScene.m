@@ -20,7 +20,6 @@
     
     self.scaleMode = SKSceneScaleModeAspectFit;
     
-    
     SKTexture* railsTexture = [SKTexture textureWithImageNamed:@"rails_1"];
     self.railsNode = [SKSpriteNode spriteNodeWithTexture:railsTexture];
     self.railsNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
@@ -94,7 +93,9 @@
 -(void)update:(NSTimeInterval)currentTime {
     [super update:currentTime];
     
-    NSInteger horizonPosition = 400;
+    NSInteger horizonPosition = 208;
+    NSInteger railsWidth = 10;
+    NSInteger railsSpacing = 6;
     
     // Only spawn new object every X steps
     NSInteger coinSpawnInterval = 5;
@@ -104,13 +105,22 @@
         CoinNode *newCoinNode = [CoinNode new];
         
         // Calculate initial position and size
-        newCoinNode.position = CGPointMake(40, horizonPosition);
+        NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
+        newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
+        newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
         
         // Add to index
         [self addChild:newCoinNode];
         [coinNodes addObject:newCoinNode];
     }
     
+    // Update position or remove hidden
+    for (CoinNode* coinNode in coinNodes) {
+        if (coinNode.position.y < 0) {
+            [coinNodes removeObject:coinNode];
+            [coinNode removeFromParent];
+        }
+    }
     
 }
 
