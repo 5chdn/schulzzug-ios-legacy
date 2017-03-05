@@ -8,7 +8,7 @@
 
 #import "GameScene.h"
 #import "CoinNode.h"
-
+#import "AudioEngine.h"
 
 @implementation GameScene
 
@@ -88,6 +88,8 @@
     SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
     followSquare.timingMode = SKActionTimingEaseInEaseOut;
     [self.chulzTrainNode runAction:followSquare];
+    
+    [AudioEngine playWallSmashSound];
 }
 
 @end
