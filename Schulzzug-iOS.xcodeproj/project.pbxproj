@@ -17,6 +17,7 @@
 		83B958851E6B509A00B72434 /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */; };
 		83B958871E6B540200B72434 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */; };
 		83B9588A1E6B61C000B72434 /* CoinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B958891E6B61C000B72434 /* CoinNode.m */; };
+		8624BCED1E6B9AB000015C77 /* Europahymne.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8624BCEC1E6B9AB000015C77 /* Europahymne.mp3 */; };
 		863A53451E6B0D7C00D89F24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53441E6B0D7C00D89F24 /* main.m */; };
 		863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53471E6B0D7C00D89F24 /* AppDelegate.m */; };
 		863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A534A1E6B0D7C00D89F24 /* ViewController.m */; };
@@ -67,6 +68,7 @@
 		83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		83B958881E6B61C000B72434 /* CoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinNode.h; sourceTree = "<group>"; };
 		83B958891E6B61C000B72434 /* CoinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinNode.m; sourceTree = "<group>"; };
+		8624BCEC1E6B9AB000015C77 /* Europahymne.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Europahymne.mp3; sourceTree = "<group>"; };
 		863A53401E6B0D7C00D89F24 /* Schulzzug-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schulzzug-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A53441E6B0D7C00D89F24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		863A53461E6B0D7C00D89F24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				863A539A1E6B98B400D89F24 /* coin.wav */,
 				863A539E1E6B991D00D89F24 /* wall_smash.wav */,
+				8624BCEC1E6B9AB000015C77 /* Europahymne.mp3 */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			files = (
 				863A53531E6B0D7C00D89F24 /* LaunchScreen.storyboard in Resources */,
 				863A53501E6B0D7C00D89F24 /* Assets.xcassets in Resources */,
+				8624BCED1E6B9AB000015C77 /* Europahymne.mp3 in Resources */,
 				863A534E1E6B0D7C00D89F24 /* Main.storyboard in Resources */,
 				863A539F1E6B991D00D89F24 /* wall_smash.wav in Resources */,
 				863A539B1E6B98B400D89F24 /* coin.wav in Resources */,
