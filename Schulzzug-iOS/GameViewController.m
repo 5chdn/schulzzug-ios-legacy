@@ -20,11 +20,12 @@
     [super viewDidLoad];
     
     [AudioEngine startBackgroundMusic];
-    self.gameScene.gameSceneDelegate = self;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     self.gameScene = [[GameScene alloc] initWithSize:self.spriteKitView.frame.size];
+    self.gameScene.gameSceneDelegate = self;
     
     [self.spriteKitView presentScene:self.gameScene];
     
