@@ -305,8 +305,10 @@
                     
                     if([node isKindOfClass:[CoinNode class]]) {
                         [AudioEngine playCoinCollectSound];
+                        [self.gameSceneDelegate didCollectCoin];
                     } else {
                         [AudioEngine playWallSmashSound];
+                        [self.gameSceneDelegate didCrashTrumpWall];
                     }
                     
                     [node removeFromParent];
