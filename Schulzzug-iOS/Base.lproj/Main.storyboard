@@ -287,7 +287,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="score_panel" width="187" height="36"/>
+        <image name="score_panel" width="375" height="72"/>
         <image name="select_character" width="719" height="1280"/>
     </resources>
 </document>
