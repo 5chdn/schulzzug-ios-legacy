@@ -64,7 +64,7 @@
 }
 
 -(void)didCollectCoin {
-    score += 5;
+    score += 1;
     self.scoreLabel.text = [NSString stringWithFormat:@"%i", (int)score];
 }
 
@@ -74,7 +74,8 @@
 }
 
 -(void)didCrashTrumpWall {
-    
+    score -= 10;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%i", (int)score];
 }
 
 -(void)didFinish {
