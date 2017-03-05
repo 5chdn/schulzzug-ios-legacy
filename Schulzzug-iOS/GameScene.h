@@ -17,6 +17,11 @@ typedef enum {
     DrivingDirectionRight
 } DrivingDirection;
 
+typedef enum {
+    SpawnSideLeft,
+    SpawnSideRight
+} SpawnSide;
+
 @interface GameScene : SKScene {
     NSMutableArray<CoinNode*>* coinNodes;
 }

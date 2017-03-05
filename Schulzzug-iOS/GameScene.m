@@ -24,7 +24,7 @@
     
     
     SKTexture* railsTexture = [SKTexture textureWithImageNamed:@"rails01"];
-
+    
     self.railsNode = [SKSpriteNode spriteNodeWithTexture:railsTexture];
     self.railsNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
     [self addChild:self.railsNode];
@@ -56,51 +56,71 @@
     
     self.chulzTrainNode = [SKSpriteNode spriteNodeWithTexture:zugTexture];
     self.chulzTrainNode.position = CGPointMake(view.frame.size.width/2, 240);
+    self.chulzTrainNode.zPosition = 10;
     [self addChild:self.chulzTrainNode];
     
-
+    
     [self didUpdateDrivingdirection];
     
     [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self spawnTree];
+        
+        [self spawnEntityWithName:@"specialtree" onSide:SpawnSideLeft];
+        
+        
     }];
-
-}
-
--(void) spawnBush {
+    
+    [NSTimer scheduledTimerWithTimeInterval:4 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self spawnEntityWithName:@"bush" onSide:SpawnSideRight];
+    }];
     
 }
 
--(void) spawnTree {
-    
+-(void) spawnEntityWithName:(NSString*) name onSide:(SpawnSide) spawnSide {
     NSInteger horizonPosition = 208;
+    SKTexture* texture = [SKTexture textureWithImageNamed:name];
     
+    CGFloat spawnX, spawnY, targetX, targetY;
+    spawnY =self.frame.size.height - horizonPosition - 32 - 16;
+    targetY = -50;
+    spawnX = 0;
+    targetX = 0;
     
+    if(spawnSide == SpawnSideLeft) {
+        spawnX = self.view.frame.size.width/3.5;
+        targetX = -150;
+    }
     
-    SKTexture* tree = [SKTexture textureWithImageNamed:@"specialtree"];
+    if(spawnSide == SpawnSideRight) {
+        spawnX = self.view.frame.size.width-(self.view.frame.size.width/3.5);
+        targetX = self.view.frame.size.width+150;
+    }
     
-    SKSpriteNode* treenode = [SKSpriteNode spriteNodeWithTexture:tree];
-    treenode.position = CGPointMake(self.view.frame.size.width/3.5, self.frame.size.height - horizonPosition - 32 - 16);
+    SKSpriteNode* node = [SKSpriteNode spriteNodeWithTexture:texture];
+    node.position = CGPointMake(spawnX, spawnY);
     
     SKAction* scaleX = [SKAction resizeToWidth:0 duration:0];
     SKAction* scaleY = [SKAction resizeToHeight:0 duration:0];
     
-    [treenode runAction:scaleX];
-    [treenode runAction:scaleY];
+    [node runAction:scaleX];
+    [node runAction:scaleY];
     
-    [self addChild:treenode];
     
-    SKAction* move = [SKAction moveTo:CGPointMake(-100, -50) duration:13];
-    scaleX = [SKAction resizeToWidth:130 duration:13];
-    scaleY = [SKAction resizeToHeight:130 duration:13];
+    [self addChild:node];
+    
+    
+    SKAction* move = [SKAction moveTo:CGPointMake(targetX, targetY) duration:13];
+    scaleX = [SKAction resizeToWidth:texture.size.width duration:13];
+    scaleY = [SKAction resizeToHeight:texture.size.height duration:13];
     
     move.timingMode = SKActionTimingEaseIn;
     
-    [treenode runAction:move];
-    [treenode runAction:scaleX];
-    [treenode runAction:scaleY];
+    [node runAction:move];
+    [node runAction:scaleX];
+    [node runAction:scaleY];
     
 }
+
+
 
 -(void) jumpRight {
     
@@ -128,7 +148,7 @@
 }
 
 -(void) jumpLeft {
-
+    
     
     if(self.drivingDirecton != DrivingDirectionLeft) {
         
@@ -150,7 +170,7 @@
     } else if(self.drivingDirecton == DrivingDirectionRight) {
         self.drivingDirecton = DrivingDirectionForward;
     }
-
+    
     [self didUpdateDrivingdirection];
     
 }
@@ -166,19 +186,19 @@
         SKAction* trainAnimation = [SKAction animateWithTextures:zugTextures timePerFrame:0.15];
         
         [self.chulzTrainNode runAction:[SKAction repeatActionForever:trainAnimation] withKey:@"texture-animation"];
-
+        
     } else if(self.drivingDirecton == DrivingDirectionLeft) {
         NSArray <SKTexture*>* zugTextures = @[[SKTexture textureWithImageNamed:@"Train_Left_02"],
                                               [SKTexture textureWithImageNamed:@"Train_Left_03"]];
         SKAction* trainAnimation = [SKAction animateWithTextures:zugTextures timePerFrame:0.15];
         [self.chulzTrainNode runAction:[SKAction repeatActionForever:trainAnimation] withKey:@"texture-animation"];
-
+        
     } else if(self.drivingDirecton == DrivingDirectionRight) {
         NSArray <SKTexture*>* zugTextures = @[[SKTexture textureWithImageNamed:@"Train_Right_02"],
                                               [SKTexture textureWithImageNamed:@"Train_Right_03"]];
         SKAction* trainAnimation = [SKAction animateWithTextures:zugTextures timePerFrame:0.15];
         [self.chulzTrainNode runAction:[SKAction repeatActionForever:trainAnimation] withKey:@"texture-animation"];
-
+        
     }
     
 }
