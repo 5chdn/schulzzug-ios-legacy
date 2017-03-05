@@ -53,9 +53,6 @@
     
     coinNodes = [NSMutableArray new];
     
-    CoinNode* coinNode = [CoinNode new];
-    coinNode.position = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
-    [self addChild:coinNode];
     
     
     SKTexture* skyTexture = [SKTexture textureWithImageNamed:@"sky"];
@@ -100,17 +97,17 @@
     SKTexture* texture = [SKTexture textureWithImageNamed:name];
     
     CGFloat spawnX, spawnY, targetX, targetY;
-    spawnY = self.frame.size.height - horizonPosition - 32 - 16;
-    targetY = -50;
+    spawnY = self.frame.size.height - horizonPosition;
+    targetY = -200;
     spawnX = 0;
     targetX = 0;
     
     if(spawnSide == SpawnSideLeft) {
-        spawnX = self.view.frame.size.width/3.5;
-        targetX = -150;
+        spawnX = self.view.frame.size.width/2.5;
+        targetX = -230;
     } else if(spawnSide == SpawnSideRight) {
-        spawnX = self.view.frame.size.width-(self.view.frame.size.width/3.5);
-        targetX = self.view.frame.size.width+150;
+        spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5);
+        targetX = self.view.frame.size.width+230;
     } else if(spawnSide == SpawnSideLane1) {
         spawnX = self.view.frame.size.width/2;
         targetX = self.view.frame.size.width/2;
@@ -121,8 +118,8 @@
     SKSpriteNode* node = [SKSpriteNode spriteNodeWithTexture:texture];
     node.position = CGPointMake(spawnX, spawnY);
     
-    SKAction* scaleX = [SKAction resizeToWidth:0 duration:0];
-    SKAction* scaleY = [SKAction resizeToHeight:0 duration:0];
+    __block SKAction* scaleX = [SKAction resizeToWidth:texture.size.width*0.1 duration:0];
+    __block SKAction* scaleY = [SKAction resizeToHeight:texture.size.height*0.1 duration:0];
     
     [node runAction:scaleX];
     [node runAction:scaleY];
@@ -131,27 +128,34 @@
     [self addChild:node];
     
     
-    SKAction* speed = [SKAction customActionWithDuration:13 actionBlock:^(SKNode * _Nonnull node, CGFloat elapsedTime) {
-        float t = 13 - elapsedTime;
-        
-        if(t != 0) {
-            float velocity = 1 / t;
-            
-        }
+    int duration = 13;
+    
+    SKAction* speed = [SKAction customActionWithDuration:duration actionBlock:^(SKNode * _Nonnull node, CGFloat elapsedTime) {
+        float t = elapsedTime;
+        float s = 0.006*(t*t);
         
         
+        NSLog(@"%f", s);
+        CGPoint newPosition = CGPointMake(spawnX + ((targetX-spawnX) * s), spawnY + ((targetY-spawnY) * s));
+        node.position = newPosition;
         
+        scaleX = [SKAction resizeToWidth:s*texture.size.width duration:0];
+        scaleY = [SKAction resizeToHeight:s*texture.size.height duration:0];
+
+        [node runAction:scaleX];
+        [node runAction:scaleY];
     }];
+    [node runAction:speed];
     
-    SKAction* move = [SKAction moveTo:CGPointMake(targetX, targetY) duration:13];
-    scaleX = [SKAction resizeToWidth:texture.size.width duration:13];
-    scaleY = [SKAction resizeToHeight:texture.size.height duration:13];
-    
-    move.timingMode = SKActionTimingEaseIn;
-    
-    [node runAction:move];
-    [node runAction:scaleX];
-    [node runAction:scaleY];
+    //    SKAction* move = [SKAction moveTo:CGPointMake(targetX, targetY) duration:13];
+    //    scaleX = [SKAction resizeToWidth:texture.size.width duration:13];
+    //    scaleY = [SKAction resizeToHeight:texture.size.height duration:13];
+    //
+    //    move.timingMode = SKActionTimingEaseIn;
+    //
+    //    [node runAction:move];
+    //    [node runAction:scaleX];
+    //    [node runAction:scaleY];
     
 }
 
@@ -251,33 +255,33 @@
     [super update:currentTime];
     
     /*NSInteger horizonPosition = 208;
-    NSInteger railsWidth = 10;
-    NSInteger railsSpacing = 6;
-    
-    // Only spawn new object every X steps
-    NSInteger coinSpawnInterval = 5;
-    if ((NSInteger)currentTime % coinSpawnInterval == 0) {
-        NSInteger railIndex = [Game randomFrom:0 to:2];
-        
-        CoinNode *newCoinNode = [CoinNode new];
-        
-        // Calculate initial position and size
-        NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
-        newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
-        newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
-        
-        // Add to index
-        [self addChild:newCoinNode];
-        [coinNodes addObject:newCoinNode];
-    }
-    
-    // Update position or remove hidden
-    for (CoinNode* coinNode in coinNodes) {
-        if (coinNode.position.y < 0) {
-            [coinNodes removeObject:coinNode];
-            [coinNode removeFromParent];
-        }
-    }*/
+     NSInteger railsWidth = 10;
+     NSInteger railsSpacing = 6;
+     
+     // Only spawn new object every X steps
+     NSInteger coinSpawnInterval = 5;
+     if ((NSInteger)currentTime % coinSpawnInterval == 0) {
+     NSInteger railIndex = [Game randomFrom:0 to:2];
+     
+     CoinNode *newCoinNode = [CoinNode new];
+     
+     // Calculate initial position and size
+     NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
+     newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
+     newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
+     
+     // Add to index
+     [self addChild:newCoinNode];
+     [coinNodes addObject:newCoinNode];
+     }
+     
+     // Update position or remove hidden
+     for (CoinNode* coinNode in coinNodes) {
+     if (coinNode.position.y < 0) {
+     [coinNodes removeObject:coinNode];
+     [coinNode removeFromParent];
+     }
+     }*/
     
     for(SKNode* node in self.children) {
         if([node.name isEqualToString:@"front"]) {
