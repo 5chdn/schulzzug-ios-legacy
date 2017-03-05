@@ -58,11 +58,6 @@
     SKAction* trainAnimation = [SKAction animateWithTextures:zugTextures timePerFrame:0.15];
     [self.chulzTrainNode runAction:[SKAction repeatActionForever:trainAnimation]];
     
-    
-    
-    
-
-    
 }
 
 -(void) jumpRight {

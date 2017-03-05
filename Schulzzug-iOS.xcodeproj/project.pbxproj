@@ -28,6 +28,9 @@
 		863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53771E6B0F9B00D89F24 /* GameViewController.m */; };
 		863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A537D1E6B1A2900D89F24 /* GameScene.m */; };
 		863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A538C1E6B201100D89F24 /* BackgroundParallax.m */; };
+		863A53931E6B961E00D89F24 /* AudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53921E6B961E00D89F24 /* AudioEngine.m */; };
+		863A53981E6B967900D89F24 /* AMGAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53951E6B967900D89F24 /* AMGAudioPlayer.m */; };
+		863A53991E6B967900D89F24 /* AMGSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A53971E6B967900D89F24 /* AMGSoundManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,12 @@
 		863A537D1E6B1A2900D89F24 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		863A538B1E6B201100D89F24 /* BackgroundParallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundParallax.h; sourceTree = "<group>"; };
 		863A538C1E6B201100D89F24 /* BackgroundParallax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundParallax.m; sourceTree = "<group>"; };
+		863A53911E6B961E00D89F24 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
+		863A53921E6B961E00D89F24 /* AudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEngine.m; sourceTree = "<group>"; };
+		863A53941E6B967900D89F24 /* AMGAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMGAudioPlayer.h; sourceTree = "<group>"; };
+		863A53951E6B967900D89F24 /* AMGAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMGAudioPlayer.m; sourceTree = "<group>"; };
+		863A53961E6B967900D89F24 /* AMGSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMGSoundManager.h; sourceTree = "<group>"; };
+		863A53971E6B967900D89F24 /* AMGSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMGSoundManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +167,12 @@
 				83B958891E6B61C000B72434 /* CoinNode.m */,
 				863A538B1E6B201100D89F24 /* BackgroundParallax.h */,
 				863A538C1E6B201100D89F24 /* BackgroundParallax.m */,
+				863A53911E6B961E00D89F24 /* AudioEngine.h */,
+				863A53921E6B961E00D89F24 /* AudioEngine.m */,
+				863A53941E6B967900D89F24 /* AMGAudioPlayer.h */,
+				863A53951E6B967900D89F24 /* AMGAudioPlayer.m */,
+				863A53961E6B967900D89F24 /* AMGSoundManager.h */,
+				863A53971E6B967900D89F24 /* AMGSoundManager.m */,
 				863A534C1E6B0D7C00D89F24 /* Main.storyboard */,
 				863A534F1E6B0D7C00D89F24 /* Assets.xcassets */,
 				863A53511E6B0D7C00D89F24 /* LaunchScreen.storyboard */,
@@ -362,16 +377,19 @@
 				83B958751E6B21B000B72434 /* Level.swift in Sources */,
 				83B958831E6B4B4700B72434 /* LeaderboardViewController.swift in Sources */,
 				863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */,
+				863A53991E6B967900D89F24 /* AMGSoundManager.m in Sources */,
 				83B9588A1E6B61C000B72434 /* CoinNode.m in Sources */,
 				83B958871E6B540200B72434 /* UIAlertControllerExtension.swift in Sources */,
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
 				83B9587F1E6B456700B72434 /* Router.swift in Sources */,
 				83B958851E6B509A00B72434 /* ResponseObjectSerializable.swift in Sources */,
+				863A53931E6B961E00D89F24 /* AudioEngine.m in Sources */,
 				83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */,
 				863A537E1E6B1A2900D89F24 /* GameScene.m in Sources */,
 				863A538D1E6B201100D89F24 /* BackgroundParallax.m in Sources */,
 				863A53481E6B0D7C00D89F24 /* AppDelegate.m in Sources */,
 				863A53451E6B0D7C00D89F24 /* main.m in Sources */,
+				863A53981E6B967900D89F24 /* AMGAudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
 
 @property(strong) GameScene* gameScene;
 @property (strong, nonatomic) IBOutlet SKView *spriteKitView;
+@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 
 
 @end
