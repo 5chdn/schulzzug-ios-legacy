@@ -10,6 +10,10 @@
 #import "BackgroundParallax.h"
 #import "CoinNode.h"
 
+@protocol GameSceneDelegate <NSObject>
+- (void)didCollectCoin;
+- (void)didCrashTrumpWall;
+@end
 
 typedef enum {
     DrivingDirectionForward,
@@ -35,7 +39,7 @@ typedef enum {
 @property(nonatomic, strong) SKSpriteNode* skyNode;
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
 @property DrivingDirection drivingDirecton;
-
+@property(weak, nonatomic) id <GameSceneDelegate> gameSceneDelegate;
 
 -(void) jumpRight;
 -(void) jumpLeft;

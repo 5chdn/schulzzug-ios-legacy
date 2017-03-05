@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     [AudioEngine startBackgroundMusic];
-    // Do any additional setup after loading the view.
+    self.gameScene.gameSceneDelegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -39,6 +39,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
+
 - (IBAction)swipeRight:(id)sender {
     [self.gameScene jumpRight];
 }
@@ -53,6 +54,14 @@
 
 -(BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+-(void)didCollectCoin {
+    
+}
+
+-(void)didCrashTrumpWall {
+    
 }
 
 

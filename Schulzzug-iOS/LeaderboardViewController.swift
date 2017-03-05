@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class LeaderboardViewController: UITableViewController {
     
     var leaderboardItems: [LeaderboardItem] = []
@@ -27,6 +26,7 @@ class LeaderboardViewController: UITableViewController {
                 self.leaderboardItems = []
                 UIAlertController.showError(on: self, with: "Die Scores konnten nicht geladen werden.")
             }
+            
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
             }
