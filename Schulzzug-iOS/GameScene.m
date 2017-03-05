@@ -110,10 +110,10 @@
     
     if(spawnSide == SpawnSideLeft) {
         spawnX = self.view.frame.size.width/2.5;
-        targetX = -230;
+        targetX = -300;
     } else if(spawnSide == SpawnSideRight) {
         spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5);
-        targetX = self.view.frame.size.width+230;
+        targetX = self.view.frame.size.width+300;
     } else if(spawnSide == SpawnSideLane1) {
         spawnX = self.view.frame.size.width/2;
         targetX = self.view.frame.size.width/2;
@@ -185,7 +185,7 @@
         followSquare.timingMode = SKActionTimingEaseInEaseOut;
         [self.chulzTrainNode runAction:followSquare];
         
-        [AudioEngine playWallSmashSound];
+        [AudioEngine playJumpSound];
     }
     
     if(self.drivingDirecton == DrivingDirectionForward) {
@@ -214,7 +214,7 @@
         followSquare.timingMode = SKActionTimingEaseInEaseOut;
         [self.chulzTrainNode runAction:followSquare];
         
-        [AudioEngine playWallSmashSound];
+        [AudioEngine playJumpSound];
     }
     
     if(self.drivingDirecton == DrivingDirectionForward) {
@@ -261,7 +261,7 @@
     SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.5];
     [self.chulzTrainNode runAction:followSquare];
     
-    [AudioEngine playWallSmashSound];
+    [AudioEngine playJumpSound];
 }
 
 -(void)update:(NSTimeInterval)currentTime {
