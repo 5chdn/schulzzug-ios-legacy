@@ -90,6 +90,10 @@
         [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
     }];
     
+    [NSTimer scheduledTimerWithTimeInterval:2.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self spawnEntityWithName:@"coin" onSide:SpawnSideLane1];
+    }];
+    
 }
 
 -(void) spawnEntityWithName:(NSString*) name onSide:(SpawnSide) spawnSide {
@@ -102,6 +106,8 @@
     spawnX = 0;
     targetX = 0;
     
+    NSString* nodeName = @"";
+    
     if(spawnSide == SpawnSideLeft) {
         spawnX = self.view.frame.size.width/2.5;
         targetX = -230;
@@ -111,12 +117,21 @@
     } else if(spawnSide == SpawnSideLane1) {
         spawnX = self.view.frame.size.width/2;
         targetX = self.view.frame.size.width/2;
+        nodeName = @"lane1";
     } else {
         return;
     }
     
-    SKSpriteNode* node = [SKSpriteNode spriteNodeWithTexture:texture];
+    SKSpriteNode* node;
+    if([name isEqualToString:@"coin"]) {
+        node = [CoinNode new];
+    } else {
+        node = [SKSpriteNode spriteNodeWithTexture:texture];
+    }
+    
+    
     node.position = CGPointMake(spawnX, spawnY);
+    node.name = nodeName;
     
     __block SKAction* scaleX = [SKAction resizeToWidth:texture.size.width*0.1 duration:0];
     __block SKAction* scaleY = [SKAction resizeToHeight:texture.size.height*0.1 duration:0];
@@ -134,14 +149,12 @@
         float t = elapsedTime;
         float s = 0.006*(t*t);
         
-        
-        NSLog(@"%f", s);
-        CGPoint newPosition = CGPointMake(spawnX + ((targetX-spawnX) * s), spawnY + ((targetY-spawnY) * s));
+                CGPoint newPosition = CGPointMake(spawnX + ((targetX-spawnX) * s), spawnY + ((targetY-spawnY) * s));
         node.position = newPosition;
         
         scaleX = [SKAction resizeToWidth:s*texture.size.width duration:0];
         scaleY = [SKAction resizeToHeight:s*texture.size.height duration:0];
-
+        
         [node runAction:scaleX];
         [node runAction:scaleY];
     }];
@@ -167,7 +180,7 @@
         
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
         [bezierPath moveToPoint: CGPointMake(0, 0)];
-        [bezierPath addQuadCurveToPoint:CGPointMake(140, 0) controlPoint:CGPointMake(70, 50)];
+        [bezierPath addQuadCurveToPoint:CGPointMake(120, 0) controlPoint:CGPointMake(60, 50)];
         SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
         followSquare.timingMode = SKActionTimingEaseInEaseOut;
         [self.chulzTrainNode runAction:followSquare];
@@ -193,7 +206,7 @@
         
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
         [bezierPath moveToPoint: CGPointMake(0, 0)];
-        [bezierPath addQuadCurveToPoint:CGPointMake(-140, 0) controlPoint:CGPointMake(-70, 50)];
+        [bezierPath addQuadCurveToPoint:CGPointMake(-120, 0) controlPoint:CGPointMake(-60, 50)];
         
         
         
@@ -286,11 +299,28 @@
     for(SKNode* node in self.children) {
         if([node.name isEqualToString:@"front"]) {
             
+        } else if([node.name isEqualToString:@"lane1"]) {
+            if(self.drivingDirecton == DrivingDirectionForward) {
+                if(self.chulzTrainNode.position.y - 10 < node.position.y && self.chulzTrainNode.position.y + 10 > node.position.y) {
+                    
+                    if([node isKindOfClass:[CoinNode class]]) {
+                        [AudioEngine playCoinCollectSound];
+                    } else {
+                        [AudioEngine playWallSmashSound];
+                    }
+                    
+                    [node removeFromParent];
+                    
+                }
+            }
         } else {
             node.zPosition = self.frame.size.height - node.frame.origin.y;
+            
         }
         
     }
+    
+    
     
 }
 
