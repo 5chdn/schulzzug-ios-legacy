@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GameScene.h"
+#import "Schulzzug_iOS-Swift.h"
 
 @import SceneKit;
 @import SpriteKit;
@@ -17,6 +18,5 @@
 @property(strong) GameScene* gameScene;
 @property (strong, nonatomic) IBOutlet SKView *spriteKitView;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
-
 
 @end

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83B958731E6B1F1900B72434 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958721E6B1F1900B72434 /* Game.swift */; };
-		83B958751E6B21B000B72434 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958741E6B21B000B72434 /* Level.swift */; };
 		83B9587A1E6B42F300B72434 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B958791E6B42F300B72434 /* Alamofire.framework */; };
 		83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9587C1E6B436000B72434 /* DataProvider.swift */; };
 		83B9587F1E6B456700B72434 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9587E1E6B456700B72434 /* Router.swift */; };
@@ -57,8 +55,6 @@
 
 /* Begin PBXFileReference section */
 		83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Schulzzug-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		83B958721E6B1F1900B72434 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		83B958741E6B21B000B72434 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		83B958771E6B42E300B72434 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Alamofire; path = Carthage/Build/iOS/Alamofire.framework/Alamofire; sourceTree = "<group>"; };
 		83B958791E6B42F300B72434 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		83B9587C1E6B436000B72434 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -191,9 +187,7 @@
 				863A53511E6B0D7C00D89F24 /* LaunchScreen.storyboard */,
 				863A53541E6B0D7C00D89F24 /* Info.plist */,
 				863A53431E6B0D7C00D89F24 /* Supporting Files */,
-				83B958721E6B1F1900B72434 /* Game.swift */,
 				83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */,
-				83B958741E6B21B000B72434 /* Level.swift */,
 				83B9587E1E6B456700B72434 /* Router.swift */,
 				83B9587C1E6B436000B72434 /* DataProvider.swift */,
 				83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */,
@@ -401,8 +395,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B958731E6B1F1900B72434 /* Game.swift in Sources */,
-				83B958751E6B21B000B72434 /* Level.swift in Sources */,
 				83B958831E6B4B4700B72434 /* LeaderboardViewController.swift in Sources */,
 				863A53781E6B0F9B00D89F24 /* GameViewController.m in Sources */,
 				863A53991E6B967900D89F24 /* AMGSoundManager.m in Sources */,

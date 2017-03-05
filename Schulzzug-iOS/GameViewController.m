@@ -19,7 +19,6 @@
     [super viewDidLoad];
     
     [AudioEngine startBackgroundMusic];
-    // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -39,6 +38,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
+
 - (IBAction)swipeRight:(id)sender {
     [self.gameScene jumpRight];
 }
