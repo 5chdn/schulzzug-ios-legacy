@@ -77,13 +77,34 @@
     
     [NSTimer scheduledTimerWithTimeInterval:1.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         
-        [self spawnEntityWithName:@"specialtree" onSide:SpawnSideLeft];
+        if(arc4random_uniform(2) == 0) {
+            [self spawnEntityWithName:@"specialtree" onSide:SpawnSideLeft];
+        } else {
+            [self spawnEntityWithName:@"specialtree" onSide:SpawnSideRight];
+        }
+        
+        
         
         
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self spawnEntityWithName:@"bush" onSide:SpawnSideRight];
+        int random = arc4random_uniform(3);
+        if(random == 0) {
+            [self spawnEntityWithName:@"bush" onSide:SpawnSideRight];
+        } else if(random == 1){
+            [self spawnEntityWithName:@"bush" onSide:SpawnSideLeft];
+        } else if(random == 2) {
+            
+            if(arc4random_uniform(2) == 0) {
+                [self spawnEntityWithName:@"mega" onSide:SpawnSideLeft];
+            } else {
+                [self spawnEntityWithName:@"mega" onSide:SpawnSideLeft];
+            }
+            
+            
+        }
+        
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:4 repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -109,18 +130,20 @@
     NSString* nodeName = @"";
     
     if(spawnSide == SpawnSideLeft) {
-        spawnX = self.view.frame.size.width/2.5;
-        targetX = -300;
+        spawnX = self.view.frame.size.width/2.5 - arc4random_uniform(30);
+        
     } else if(spawnSide == SpawnSideRight) {
-        spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5);
-        targetX = self.view.frame.size.width+300;
+        spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5) + arc4random_uniform(30);
+        //targetX = self.view.frame.size.width+500;
     } else if(spawnSide == SpawnSideLane1) {
         spawnX = self.view.frame.size.width/2;
-        targetX = self.view.frame.size.width/2;
+        //targetX = self.view.frame.size.width/2;
         nodeName = @"lane1";
     } else {
         return;
     }
+    
+    targetX = self.view.frame.size.width/2 + (spawnX - self.view.frame.size.width/2) * 13.88;
     
     SKSpriteNode* node;
     if([name isEqualToString:@"coin"]) {
@@ -306,9 +329,19 @@
                     if([node isKindOfClass:[CoinNode class]]) {
                         [AudioEngine playCoinCollectSound];
                         [self.gameSceneDelegate didCollectCoin];
+
                     } else {
                         [AudioEngine playWallSmashSound];
                         [self.gameSceneDelegate didCrashTrumpWall];
+                    
+                        SKAction* invisible = [SKAction fadeAlphaBy:-1 duration:0.1];
+                        SKAction* visible = [SKAction fadeAlphaBy:1 duration:0.1];
+                        
+                        SKAction* blinking = [SKAction sequence:@[invisible,visible]];
+                        
+                        SKAction* repeatBlinking = [SKAction repeatAction:blinking count:4];
+                        
+                        [self.chulzTrainNode runAction:repeatBlinking];
                     }
                     
                     [node removeFromParent];
