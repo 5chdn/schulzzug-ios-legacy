@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     [AudioEngine startBackgroundMusic];
+    self.gameScene.gameSceneDelegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -53,6 +54,14 @@
 
 -(BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+-(void)didCollectCoin {
+    
+}
+
+-(void)didCrashTrumpWall {
+    
 }
 
 

@@ -13,7 +13,7 @@
 @import SceneKit;
 @import SpriteKit;
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController<GameSceneDelegate>
 
 @property(strong) GameScene* gameScene;
 @property (strong, nonatomic) IBOutlet SKView *spriteKitView;
