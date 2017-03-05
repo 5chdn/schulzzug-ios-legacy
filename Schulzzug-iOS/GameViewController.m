@@ -88,6 +88,9 @@
     }];
 }
 
+- (IBAction)chooter:(id)sender {
+    [AudioEngine chootChoot];
+}
 
 /*
 #pragma mark - Navigation

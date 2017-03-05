@@ -17,6 +17,7 @@
 		83B958851E6B509A00B72434 /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */; };
 		83B958871E6B540200B72434 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */; };
 		83B9588A1E6B61C000B72434 /* CoinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B958891E6B61C000B72434 /* CoinNode.m */; };
+		8615509E1E6BF27D0020C976 /* whistle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8615509D1E6BF27D0020C976 /* whistle.wav */; };
 		8624BCED1E6B9AB000015C77 /* Europahymne.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8624BCEC1E6B9AB000015C77 /* Europahymne.mp3 */; };
 		8624BCEF1E6BA96200015C77 /* lokomotive.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8624BCEE1E6BA96200015C77 /* lokomotive.wav */; };
 		8624BCF11E6BD88F00015C77 /* blubb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8624BCF01E6BD88F00015C77 /* blubb.wav */; };
@@ -72,6 +73,7 @@
 		83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		83B958881E6B61C000B72434 /* CoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinNode.h; sourceTree = "<group>"; };
 		83B958891E6B61C000B72434 /* CoinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinNode.m; sourceTree = "<group>"; };
+		8615509D1E6BF27D0020C976 /* whistle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whistle.wav; sourceTree = "<group>"; };
 		8624BCEC1E6B9AB000015C77 /* Europahymne.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Europahymne.mp3; sourceTree = "<group>"; };
 		8624BCEE1E6BA96200015C77 /* lokomotive.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lokomotive.wav; sourceTree = "<group>"; };
 		8624BCF01E6BD88F00015C77 /* blubb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blubb.wav; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				8624BCEC1E6B9AB000015C77 /* Europahymne.mp3 */,
 				8624BCEE1E6BA96200015C77 /* lokomotive.wav */,
 				8624BCF01E6BD88F00015C77 /* blubb.wav */,
+				8615509D1E6BF27D0020C976 /* whistle.wav */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				863A539F1E6B991D00D89F24 /* wall_smash.wav in Resources */,
 				863A539B1E6B98B400D89F24 /* coin.wav in Resources */,
 				8624BCEF1E6BA96200015C77 /* lokomotive.wav in Resources */,
+				8615509E1E6BF27D0020C976 /* whistle.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
