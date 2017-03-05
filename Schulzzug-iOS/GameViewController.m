@@ -8,7 +8,7 @@
 
 #import "GameViewController.h"
 #import "AudioEngine.h"
-
+#import "Schulzzug_iOS-Swift.h"
 
 @interface GameViewController ()
 
@@ -21,6 +21,10 @@
     
     [AudioEngine startBackgroundMusic];
     
+    [NSTimer scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        // Fuck weakify
+        [[DataProvider default] updateScore:score :^(BOOL success) {}];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

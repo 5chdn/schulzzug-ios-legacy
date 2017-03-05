@@ -40,10 +40,6 @@
     [self addChild:self.railsNode];
     
     
-    
-    
-    
-    
     NSArray <SKTexture*>* railTextures = @[[SKTexture textureWithImageNamed:@"rails01"],
                                            [SKTexture textureWithImageNamed:@"rails02"]];
     
@@ -129,7 +125,11 @@
     [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [self spawnCloud];
     }];
-
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [[self gameSceneDelegate] didUpdateDistance];
+    }];
+    
 }
 
 -(void) spawnCloud {

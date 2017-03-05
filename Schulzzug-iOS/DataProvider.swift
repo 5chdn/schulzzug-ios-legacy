@@ -27,6 +27,21 @@ struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializab
 }
 
 
+class Config: NSObject, ResponseObjectSerializable {
+    var kanzleramtIsAFreeElf: Bool = false
+    
+    required init?(response: HTTPURLResponse, representation: Any) {
+        guard
+        let representation = representation as? [String: Any],
+            let kanzleramtIsAFreeElf = representation["user"] as? Bool
+        else { return nil }
+        self.kanzleramtIsAFreeElf = kanzleramtIsAFreeElf
+    }
+}
+
+
+
+
 @objc class DataProvider: NSObject {
     static let `default` = DataProvider()
     
@@ -80,6 +95,13 @@ struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializab
         let route = Router.updateScore(parameters)
         Alamofire.request(route).responseJSON { (response: DataResponse<Any>) in
             completion(response.result.isSuccess)
+        }
+    }
+    
+    @objc func fetchConfig(_ completion: @escaping (Bool, Config?) -> ()) {
+        let route = Router.fetchConfig
+        Alamofire.request(route).responseObject { (response: DataResponse<Config>) in
+            completion(response.result.isSuccess, response.result.value)
         }
     }
 }
