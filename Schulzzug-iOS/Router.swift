@@ -13,6 +13,7 @@ enum Router: URLRequestConvertible {
     case updateScore(Parameters)
     case fetchScore
     case fetchScores
+    case startGame
     
     var path: String {
         switch self {
@@ -22,12 +23,14 @@ enum Router: URLRequestConvertible {
             return "/me/score"
         case .fetchScores:
             return "/scores"
+        case .startGame:
+            return "/me/starts"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .register:
+        case .register, .startGame:
             return .post
         case .updateScore:
             return .put

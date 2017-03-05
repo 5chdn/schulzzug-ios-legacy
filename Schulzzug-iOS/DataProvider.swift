@@ -58,4 +58,21 @@ class DataProvider {
             completion(response.result)
         }
     }
+    
+    func startGame(_ completion: @escaping (Result<Any>) -> ()) {
+        let route = Router.startGame
+        Alamofire.request(route).responseJSON { (response: DataResponse<Any>) in
+            completion(response.result)
+        }
+    }
+    
+    func updateScore(_ score: Int, _ completion: @escaping (Result<Any>) -> ()) {
+        let parameters = [
+            "score": score
+        ]
+        let route = Router.updateScore(parameters)
+        Alamofire.request(route).responseJSON { (response: DataResponse<Any>) in
+            completion(response.result)
+        }
+    }
 }

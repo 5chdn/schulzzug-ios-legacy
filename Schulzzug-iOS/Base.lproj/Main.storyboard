@@ -117,21 +117,8 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQX-Xo-u6q" customClass="SKView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-gx-FV7">
-                                        <rect key="frame" x="8" y="8" width="359" height="30.5"/>
-                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="26"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="Atw-gx-FV7" firstAttribute="trailing" secondItem="cQX-Xo-u6q" secondAttribute="trailingMargin" id="aoX-t7-dfU"/>
-                                    <constraint firstItem="Atw-gx-FV7" firstAttribute="top" secondItem="cQX-Xo-u6q" secondAttribute="topMargin" id="igy-F9-5t8"/>
-                                    <constraint firstItem="Atw-gx-FV7" firstAttribute="leading" secondItem="cQX-Xo-u6q" secondAttribute="leadingMargin" id="jJn-Pv-CX2"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="QCR-s4-JDg" appends="YES" id="ciN-Xy-adA"/>
                                     <outletCollection property="gestureRecognizers" destination="DNE-qL-WOW" appends="YES" id="S4Q-qk-dAd"/>
@@ -139,13 +126,31 @@
                                     <outletCollection property="gestureRecognizers" destination="vex-rH-rhp" appends="YES" id="rMg-fu-fkJ"/>
                                 </connections>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="score_panel" translatesAutoresizingMaskIntoConstraints="NO" id="dtJ-Ab-5aj">
+                                <rect key="frame" x="0.0" y="595" width="375" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="NT0-8X-OOu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-gx-FV7">
+                                <rect key="frame" x="16" y="616" width="343" height="31"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dtJ-Ab-5aj" firstAttribute="leading" secondItem="8ae-Tz-caZ" secondAttribute="leading" id="6VC-Yc-4Nc"/>
+                            <constraint firstItem="2IH-er-so8" firstAttribute="top" secondItem="Atw-gx-FV7" secondAttribute="bottom" constant="20" id="ABX-Hn-cox"/>
                             <constraint firstItem="cQX-Xo-u6q" firstAttribute="top" secondItem="8ae-Tz-caZ" secondAttribute="top" id="P6w-RH-J7E"/>
+                            <constraint firstItem="2IH-er-so8" firstAttribute="top" secondItem="dtJ-Ab-5aj" secondAttribute="bottom" id="Xn3-pQ-ftR"/>
                             <constraint firstItem="cQX-Xo-u6q" firstAttribute="bottom" secondItem="2IH-er-so8" secondAttribute="top" id="Yne-2d-299"/>
+                            <constraint firstAttribute="trailing" secondItem="dtJ-Ab-5aj" secondAttribute="trailing" id="cch-x8-ZIy"/>
                             <constraint firstAttribute="trailing" secondItem="cQX-Xo-u6q" secondAttribute="trailing" id="nCc-kX-73s"/>
                             <constraint firstItem="cQX-Xo-u6q" firstAttribute="leading" secondItem="8ae-Tz-caZ" secondAttribute="leading" id="rx7-RG-aMH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Atw-gx-FV7" secondAttribute="leading" id="wwW-L4-T1r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Atw-gx-FV7" secondAttribute="trailing" id="x92-yn-JsN"/>
                         </constraints>
                     </view>
                     <connections>
@@ -239,6 +244,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="score_panel" width="375" height="72"/>
         <image name="select_character" width="719" height="1280"/>
     </resources>
 </document>
