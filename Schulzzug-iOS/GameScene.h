@@ -10,6 +10,22 @@
 #import "BackgroundParallax.h"
 #import "CoinNode.h"
 
+
+typedef enum {
+    DrivingDirectionForward,
+    DrivingDirectionLeft,
+    DrivingDirectionRight
+} DrivingDirection;
+
+typedef enum {
+    SpawnSideLeft,
+    SpawnSideRight,
+    SpawnSideLane0,
+    SpawnSideLane1,
+    SpawnSideLane2
+    
+} SpawnSide;
+
 @interface GameScene : SKScene {
     NSMutableArray<CoinNode*>* coinNodes;
 }
@@ -18,6 +34,7 @@
 @property(nonatomic, strong) SKSpriteNode* chulzTrainNode;
 @property(nonatomic, strong) SKSpriteNode* skyNode;
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
+@property DrivingDirection drivingDirecton;
 
 
 -(void) jumpRight;

@@ -7,7 +7,7 @@
 //
 
 #import "GameViewController.h"
-
+#import "AudioEngine.h"
 
 @interface GameViewController ()
 
@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [AudioEngine startBackgroundMusic];
     // Do any additional setup after loading the view.
 }
 
@@ -54,6 +54,7 @@
 -(BOOL)prefersStatusBarHidden {
     return YES;
 }
+
 
 /*
 #pragma mark - Navigation

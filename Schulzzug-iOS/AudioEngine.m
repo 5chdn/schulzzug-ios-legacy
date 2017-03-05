@@ -34,12 +34,15 @@
 
 +(void) startBackgroundMusic {
     AMGSoundManager* soundManager = [AMGSoundManager sharedManager];
-    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"theme" ofType:@"mp3"] withName:@"themetheme" inLine:@"music" withVolume:0.8 andRepeatCount:-1 fadeDuration:0 withCompletitionHandler:nil];
+    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"Europahymne" ofType:@"mp3"] withName:@"theme" inLine:@"music" withVolume:0.2 andRepeatCount:-1 fadeDuration:0 withCompletitionHandler:nil];
+    
+    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"lokomotive" ofType:@"wav"] withName:@"lokomotive" inLine:@"music" withVolume:0.5 andRepeatCount:-1 fadeDuration:0 withCompletitionHandler:nil];
 }
 
 +(void) stopBackgroundMusic {
     AMGSoundManager* soundManager = [AMGSoundManager sharedManager];
     [soundManager stopAudioWithName:@"theme" withFadeDuration:1.f];
+    [soundManager stopAudioWithName:@"lokomotive" withFadeDuration:1.f];
 }
 
 
