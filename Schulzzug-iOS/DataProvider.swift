@@ -53,7 +53,7 @@ class DataProvider {
     }
     
     func fetchScores(_ completion: @escaping (Result<[LeaderboardItem]>) -> ()) {
-        let route = Router.fetchScore
+        let route = Router.fetchScores
         Alamofire.request(route).responseCollection { (response: DataResponse<[LeaderboardItem]>) in
             completion(response.result)
         }
