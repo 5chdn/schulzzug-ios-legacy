@@ -9,12 +9,19 @@
 #import <SpriteKit/SpriteKit.h>
 #import "BackgroundParallax.h"
 
+typedef enum {
+    DrivingDirectionForward,
+    DrivingDirectionLeft,
+    DrivingDirectionRight
+} DrivingDirection;
+
 @interface GameScene : SKScene
 
 @property(nonatomic, strong) SKSpriteNode* railsNode;
 @property(nonatomic, strong) SKSpriteNode* chulzTrainNode;
 @property(nonatomic, strong) SKSpriteNode* skyNode;
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
+@property DrivingDirection drivingDirecton;
 
 
 
