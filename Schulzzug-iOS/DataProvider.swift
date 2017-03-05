@@ -18,7 +18,7 @@ struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializab
     init?(response: HTTPURLResponse, representation: Any) {
         guard
             let representation = representation as? [String: Any],
-            let username = representation["user"] as? String,
+            let username = representation["username"] as? String,
             let score = representation["score"] as? Int
         else { return nil }
         self.username = username
