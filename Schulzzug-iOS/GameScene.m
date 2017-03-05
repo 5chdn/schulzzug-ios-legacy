@@ -131,6 +131,18 @@
     [self addChild:node];
     
     
+    SKAction* speed = [SKAction customActionWithDuration:13 actionBlock:^(SKNode * _Nonnull node, CGFloat elapsedTime) {
+        float t = 13 - elapsedTime;
+        
+        if(t != 0) {
+            float velocity = 1 / t;
+            
+        }
+        
+        
+        
+    }];
+    
     SKAction* move = [SKAction moveTo:CGPointMake(targetX, targetY) duration:13];
     scaleX = [SKAction resizeToWidth:texture.size.width duration:13];
     scaleY = [SKAction resizeToHeight:texture.size.height duration:13];
