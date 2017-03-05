@@ -15,7 +15,7 @@ class LeaderboardViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         DataProvider.default.fetchScores { [weak self] result in
             guard let `self` = self else { return }
             
@@ -31,6 +31,8 @@ class LeaderboardViewController: UITableViewController {
                 self?.tableView.reloadData()
             }
         }
+        
+        tableView.allowsSelection = false;
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
