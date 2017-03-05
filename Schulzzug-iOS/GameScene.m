@@ -73,21 +73,57 @@
     
     [NSTimer scheduledTimerWithTimeInterval:1.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         
-        [self spawnEntityWithName:@"specialtree" onSide:SpawnSideLeft];
-        
-        
+        if(arc4random_uniform(2) == 0) {
+            [self spawnEntityWithName:@"specialtree" onSide:SpawnSideLeft];
+        } else {
+            [self spawnEntityWithName:@"specialtree" onSide:SpawnSideRight];
+        }
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self spawnEntityWithName:@"bush" onSide:SpawnSideRight];
+        int random = arc4random_uniform(3);
+        if(random == 0) {
+            [self spawnEntityWithName:@"bush" onSide:SpawnSideRight];
+        } else if(random == 1){
+            [self spawnEntityWithName:@"bush" onSide:SpawnSideLeft];
+        } else if(random == 2) {
+            
+            if(arc4random_uniform(2) == 0) {
+                [self spawnEntityWithName:@"mega" onSide:SpawnSideLeft];
+            } else {
+                [self spawnEntityWithName:@"mega" onSide:SpawnSideLeft];
+            }
+            
+            
+        }
+        
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:4 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
+        
+        int random = arc4random_uniform(3);
+        if(random == 0) {
+            [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane0];
+        } else if(random == 1) {
+            [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
+        } else if(random == 2) {
+            [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane2];
+        }
+        
+        
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:2.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self spawnEntityWithName:@"coin" onSide:SpawnSideLane1];
+        
+        int random = arc4random_uniform(3);
+        if(random == 0) {
+            [self spawnEntityWithName:@"coin" onSide:SpawnSideLane0];
+        } else if(random == 1) {
+            [self spawnEntityWithName:@"coin" onSide:SpawnSideLane1];
+        } else if(random == 2) {
+            [self spawnEntityWithName:@"coin" onSide:SpawnSideLane2];
+        }
+        
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -125,18 +161,28 @@
     NSString* nodeName = @"";
     
     if(spawnSide == SpawnSideLeft) {
-        spawnX = self.view.frame.size.width/2.5;
-        targetX = -300;
+        spawnX = self.view.frame.size.width/2.5 - arc4random_uniform(30);
+        
     } else if(spawnSide == SpawnSideRight) {
-        spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5);
-        targetX = self.view.frame.size.width+300;
+        spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5) + arc4random_uniform(30);
+        //targetX = self.view.frame.size.width+500;
     } else if(spawnSide == SpawnSideLane1) {
         spawnX = self.view.frame.size.width/2;
-        targetX = self.view.frame.size.width/2;
+        //targetX = self.view.frame.size.width/2;
         nodeName = @"lane1";
+    } else if(spawnSide == SpawnSideLane0) {
+        spawnX = self.view.frame.size.width/2-20;
+        //targetX = self.view.frame.size.width/2;
+        nodeName = @"lane0";
+    } else if(spawnSide == SpawnSideLane2) {
+        spawnX = self.view.frame.size.width/2+20;
+        //targetX = self.view.frame.size.width/2;
+        nodeName = @"lane2";
     } else {
         return;
     }
+    
+    targetX = self.view.frame.size.width/2 + (spawnX - self.view.frame.size.width/2) * 13.88;
     
     SKSpriteNode* node;
     if([name isEqualToString:@"coin"]) {
@@ -285,28 +331,53 @@
     
     // Lane
     for(SKNode* node in self.children) {
+        
         if([node.name isEqualToString:@"front"]) {
-            
-        } else if([node.name isEqualToString:@"lane1"]) {
-            if(self.drivingDirecton == DrivingDirectionForward) {
-                if(self.chulzTrainNode.position.y - 10 < node.position.y && self.chulzTrainNode.position.y + 10 > node.position.y) {
-                    
-                    if([node isKindOfClass:[CoinNode class]]) {
-                        [AudioEngine playCoinCollectSound];
-                        [self.gameSceneDelegate didCollectCoin];
-                    } else {
-                        [AudioEngine playWallSmashSound];
-                        [self.gameSceneDelegate didCrashTrumpWall];
-                    }
-                    
-                    [node removeFromParent];
-                    
-                }
-            }
-        } else {
-            node.zPosition = self.frame.size.height - node.frame.origin.y;
-            
+            continue;
         }
+        
+        BOOL sameLane = false;
+        
+        if([node.name isEqualToString:@"lane1"] && self.drivingDirecton == DrivingDirectionForward) {
+            sameLane = true;
+        }
+        
+        if([node.name isEqualToString:@"lane2"] && self.drivingDirecton == DrivingDirectionRight) {
+            sameLane = true;
+        }
+        
+        if([node.name isEqualToString:@"lane0"] && self.drivingDirecton == DrivingDirectionLeft) {
+            sameLane = true;
+        }
+        
+        if(sameLane) {
+            if(self.chulzTrainNode.position.y - 10 < node.position.y && self.chulzTrainNode.position.y + 10 > node.position.y) {
+                
+                if([node isKindOfClass:[CoinNode class]]) {
+                    [AudioEngine playCoinCollectSound];
+                    [self.gameSceneDelegate didCollectCoin];
+                    
+                } else {
+                    [AudioEngine playWallSmashSound];
+                    [self.gameSceneDelegate didCrashTrumpWall];
+                    
+                    SKAction* invisible = [SKAction fadeAlphaBy:-1 duration:0.1];
+                    SKAction* visible = [SKAction fadeAlphaBy:1 duration:0.1];
+                    
+                    SKAction* blinking = [SKAction sequence:@[invisible,visible]];
+                    
+                    SKAction* repeatBlinking = [SKAction repeatAction:blinking count:4];
+                    
+                    [self.chulzTrainNode runAction:repeatBlinking];
+                }
+                
+                [node removeFromParent];
+            }
+        }
+        
+        
+        
+        node.zPosition = self.frame.size.height - node.frame.origin.y;
         
         if(node.frame.origin.y > self.frame.size.height || node.frame.origin.x > self.frame.size.width) {
             [node removeFromParent];

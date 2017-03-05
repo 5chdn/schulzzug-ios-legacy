@@ -21,26 +21,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WZI-ez-zrX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="WZI-ez-zrX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pz-oy-N1D">
-                                <rect key="frame" x="148" y="617" width="78" height="30"/>
-                                <state key="normal" title="Start Game"/>
+                                <rect key="frame" x="117" y="591" width="140" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="BEU-tl-EjX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Start Game" backgroundImage="button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="fxy-Vu-tjA" kind="presentation" id="n2d-Xt-tdI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-KS-4j9">
-                                <rect key="frame" x="144" y="319" width="87" height="30"/>
-                                <state key="normal" title="Leaderboard"/>
+                                <rect key="frame" x="117" y="140" width="140" height="78"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="98H-br-ekm"/>
+                                    <constraint firstAttribute="width" constant="140" id="qcM-Z1-2ek"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Leaderboard" backgroundImage="button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="RZZ-3b-4fy" kind="show" id="H7H-Zl-gz0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puM-0N-tfk">
-                                <rect key="frame" x="129" y="356" width="116" height="30"/>
-                                <state key="normal" title="Select Character"/>
+                                <rect key="frame" x="117" y="226" width="140" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="lqR-pw-VDe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Select Character" backgroundImage="button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="xvp-pr-kE3" kind="show" id="KnF-2v-yI3"/>
                                 </connections>
@@ -48,19 +67,22 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="WZI-ez-zrX" firstAttribute="centerX" secondItem="0pz-oy-N1D" secondAttribute="centerX" id="1zh-Aa-oRv"/>
-                            <constraint firstItem="sPn-KS-4j9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FhS-A0-h2C"/>
-                            <constraint firstItem="WZI-ez-zrX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="S55-v5-1ge"/>
-                            <constraint firstAttribute="bottom" secondItem="0pz-oy-N1D" secondAttribute="bottom" constant="20" symbolic="YES" id="T6K-V0-MEa"/>
-                            <constraint firstItem="sPn-KS-4j9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UPO-1q-eOY"/>
-                            <constraint firstItem="puM-0N-tfk" firstAttribute="centerX" secondItem="sPn-KS-4j9" secondAttribute="centerX" id="VRg-pl-XHs"/>
-                            <constraint firstItem="WZI-ez-zrX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eKw-ao-UW0"/>
-                            <constraint firstAttribute="trailing" secondItem="WZI-ez-zrX" secondAttribute="trailing" id="egP-mw-EGO"/>
-                            <constraint firstItem="puM-0N-tfk" firstAttribute="top" secondItem="sPn-KS-4j9" secondAttribute="bottom" constant="7" id="g6J-Dx-4lq"/>
-                            <constraint firstItem="WZI-ez-zrX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qBG-b5-FCA"/>
+                            <constraint firstItem="puM-0N-tfk" firstAttribute="trailing" secondItem="0pz-oy-N1D" secondAttribute="trailing" id="3Dy-i4-7ZL"/>
+                            <constraint firstItem="WZI-ez-zrX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5f9-Xi-kg8"/>
+                            <constraint firstAttribute="trailing" secondItem="WZI-ez-zrX" secondAttribute="trailing" id="IXK-la-zGq"/>
+                            <constraint firstItem="sPn-KS-4j9" firstAttribute="trailing" secondItem="puM-0N-tfk" secondAttribute="trailing" id="JMg-Zl-YFO"/>
+                            <constraint firstItem="sPn-KS-4j9" firstAttribute="leading" secondItem="puM-0N-tfk" secondAttribute="leading" id="Tjl-h6-gFO"/>
+                            <constraint firstItem="puM-0N-tfk" firstAttribute="leading" secondItem="0pz-oy-N1D" secondAttribute="leading" id="aAc-2Y-SFE"/>
+                            <constraint firstItem="puM-0N-tfk" firstAttribute="top" secondItem="sPn-KS-4j9" secondAttribute="bottom" constant="8" symbolic="YES" id="cxJ-Pg-bmP"/>
+                            <constraint firstItem="0pz-oy-N1D" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="iVr-22-uXC"/>
+                            <constraint firstItem="WZI-ez-zrX" firstAttribute="centerX" secondItem="sPn-KS-4j9" secondAttribute="centerX" id="kOF-79-jAK"/>
+                            <constraint firstItem="WZI-ez-zrX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="nit-Mo-iUB"/>
+                            <constraint firstItem="sPn-KS-4j9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="120" id="sUK-58-sQb"/>
+                            <constraint firstItem="WZI-ez-zrX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tgb-oA-lVe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ytu-ml-CN8"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,6 +309,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button" width="258" height="144"/>
+        <image name="launch" width="750" height="1334"/>
         <image name="score_panel" width="375" height="72"/>
         <image name="select_character" width="719" height="1280"/>
     </resources>
