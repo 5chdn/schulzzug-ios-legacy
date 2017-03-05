@@ -23,6 +23,7 @@
     
     self.drivingDirecton = DrivingDirectionForward;
     
+    self.lastJumpTimeStamp = [NSDate new];
     
     SKTexture* railsBackgroundDirt = [SKTexture textureWithImageNamed:@"dirt"];
     
@@ -122,7 +123,7 @@
     
     
     
-    [NSTimer scheduledTimerWithTimeInterval:2.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    [NSTimer scheduledTimerWithTimeInterval:1.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         
         int random = arc4random_uniform(3);
         if(random == 0) {
@@ -349,6 +350,8 @@
     [self.chulzTrainNode runAction:followSquare];
     
     [AudioEngine playJumpSound];
+    
+    self.lastJumpTimeStamp = [NSDate new];
 }
 
 -(void)update:(NSTimeInterval)currentTime {
@@ -361,60 +364,62 @@
             continue;
         }
         
-        BOOL sameLane = false;
-        
-        if([node.name isEqualToString:@"lane1"] && self.drivingDirecton == DrivingDirectionForward) {
-            sameLane = true;
-        }
-        
-        if([node.name isEqualToString:@"lane2"] && self.drivingDirecton == DrivingDirectionRight) {
-            sameLane = true;
-        }
-        
-        if([node.name isEqualToString:@"lane0"] && self.drivingDirecton == DrivingDirectionLeft) {
-            sameLane = true;
-        }
-        
-        if(sameLane) {
-            if(self.chulzTrainNode.position.y - 10 < node.position.y && self.chulzTrainNode.position.y + 10 > node.position.y) {
-                
-                if([node isKindOfClass:[CoinNode class]]) {
-                    [AudioEngine playCoinCollectSound];
-                    [self.gameSceneDelegate didCollectCoin];
-                    [node removeFromParent];
+        if(-[self.lastJumpTimeStamp timeIntervalSinceNow] > 0.5) {
+            BOOL sameLane = false;
+            
+            if([node.name isEqualToString:@"lane1"] && self.drivingDirecton == DrivingDirectionForward) {
+                sameLane = true;
+            }
+            
+            if([node.name isEqualToString:@"lane2"] && self.drivingDirecton == DrivingDirectionRight) {
+                sameLane = true;
+            }
+            
+            if([node.name isEqualToString:@"lane0"] && self.drivingDirecton == DrivingDirectionLeft) {
+                sameLane = true;
+            }
+            
+            if(sameLane) {
+                if(self.chulzTrainNode.position.y - 10 < node.position.y && self.chulzTrainNode.position.y + 10 > node.position.y) {
                     
-                } else {
-                    [AudioEngine playWallSmashSound];
-                    [self.gameSceneDelegate didCrashTrumpWall];
+                    if([node isKindOfClass:[CoinNode class]]) {
+                        [AudioEngine playCoinCollectSound];
+                        [self.gameSceneDelegate didCollectCoin];
+                        [node removeFromParent];
+                        
+                    } else {
+                        [AudioEngine playWallSmashSound];
+                        [self.gameSceneDelegate didCrashTrumpWall];
+                        
+                        [node removeAllActions];
+                        
+                        UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                        [bezierPath moveToPoint: CGPointMake(0, 0)];
+                        [bezierPath addQuadCurveToPoint:CGPointMake(400, 0) controlPoint:CGPointMake(200, 100)];
+                        SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.4];
+                        followSquare.timingMode = SKActionTimingEaseInEaseOut;
+                        [node runAction:followSquare];
+                        node.name = @"bashed";
+                        
+                        SKAction *rotate = [SKAction rotateByAngle:3 duration:0.4];
+                        [node runAction:rotate];
+                        
+                        
+                        
+                        
+                        
+                        SKAction* invisible = [SKAction fadeAlphaBy:-1 duration:0.1];
+                        SKAction* visible = [SKAction fadeAlphaBy:1 duration:0.1];
+                        
+                        SKAction* blinking = [SKAction sequence:@[invisible,visible]];
+                        
+                        SKAction* repeatBlinking = [SKAction repeatAction:blinking count:4];
+                        
+                        [self.chulzTrainNode runAction:repeatBlinking];
+                    }
                     
-                    [node removeAllActions];
                     
-                    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-                    [bezierPath moveToPoint: CGPointMake(0, 0)];
-                    [bezierPath addQuadCurveToPoint:CGPointMake(400, 0) controlPoint:CGPointMake(200, 100)];
-                    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.4];
-                    followSquare.timingMode = SKActionTimingEaseInEaseOut;
-                    [node runAction:followSquare];
-                    node.name = @"bashed";
-                    
-                    SKAction *rotate = [SKAction rotateByAngle:3 duration:0.4];
-                    [node runAction:rotate];
-                    
-                    
-                    
-                    
-                    
-                    SKAction* invisible = [SKAction fadeAlphaBy:-1 duration:0.1];
-                    SKAction* visible = [SKAction fadeAlphaBy:1 duration:0.1];
-                    
-                    SKAction* blinking = [SKAction sequence:@[invisible,visible]];
-                    
-                    SKAction* repeatBlinking = [SKAction repeatAction:blinking count:4];
-                    
-                    [self.chulzTrainNode runAction:repeatBlinking];
                 }
-                
-                
             }
         }
         

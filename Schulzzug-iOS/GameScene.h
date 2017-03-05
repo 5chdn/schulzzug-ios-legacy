@@ -40,6 +40,7 @@ typedef enum {
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
 @property DrivingDirection drivingDirecton;
 @property(weak, nonatomic) id <GameSceneDelegate> gameSceneDelegate;
+@property NSDate* lastJumpTimeStamp;
 
 -(void) jumpRight;
 -(void) jumpLeft;
