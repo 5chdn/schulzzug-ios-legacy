@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -132,8 +131,16 @@
                                     <constraint firstAttribute="height" constant="72" id="NT0-8X-OOu"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-gx-FV7">
-                                <rect key="frame" x="16" y="616" width="343" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W1-ue-uTO">
+                                <rect key="frame" x="232" y="616" width="117" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-gx-FV7">
+                                <rect key="frame" x="64" y="615" width="110" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -142,18 +149,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dtJ-Ab-5aj" firstAttribute="leading" secondItem="8ae-Tz-caZ" secondAttribute="leading" id="6VC-Yc-4Nc"/>
-                            <constraint firstItem="2IH-er-so8" firstAttribute="top" secondItem="Atw-gx-FV7" secondAttribute="bottom" constant="20" id="ABX-Hn-cox"/>
                             <constraint firstItem="cQX-Xo-u6q" firstAttribute="top" secondItem="8ae-Tz-caZ" secondAttribute="top" id="P6w-RH-J7E"/>
                             <constraint firstItem="2IH-er-so8" firstAttribute="top" secondItem="dtJ-Ab-5aj" secondAttribute="bottom" id="Xn3-pQ-ftR"/>
                             <constraint firstItem="cQX-Xo-u6q" firstAttribute="bottom" secondItem="2IH-er-so8" secondAttribute="top" id="Yne-2d-299"/>
                             <constraint firstAttribute="trailing" secondItem="dtJ-Ab-5aj" secondAttribute="trailing" id="cch-x8-ZIy"/>
                             <constraint firstAttribute="trailing" secondItem="cQX-Xo-u6q" secondAttribute="trailing" id="nCc-kX-73s"/>
                             <constraint firstItem="cQX-Xo-u6q" firstAttribute="leading" secondItem="8ae-Tz-caZ" secondAttribute="leading" id="rx7-RG-aMH"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Atw-gx-FV7" secondAttribute="leading" id="wwW-L4-T1r"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Atw-gx-FV7" secondAttribute="trailing" id="x92-yn-JsN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="distanceLabel" destination="5W1-ue-uTO" id="IF6-5e-T6X"/>
                         <outlet property="scoreLabel" destination="Atw-gx-FV7" id="sEH-Rr-cYp"/>
                         <outlet property="spriteKitView" destination="cQX-Xo-u6q" id="QSq-Gy-4ZU"/>
                     </connections>
@@ -244,7 +249,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="score_panel" width="375" height="72"/>
+        <image name="score_panel" width="187" height="36"/>
         <image name="select_character" width="719" height="1280"/>
     </resources>
 </document>
