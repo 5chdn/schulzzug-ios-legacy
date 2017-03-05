@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "CoinNode.h"
+#import "Schulzzug_iOS-Swift.h"
 #import "AudioEngine.h"
 
 @implementation GameScene
@@ -23,6 +24,7 @@
     
     
     SKTexture* railsTexture = [SKTexture textureWithImageNamed:@"rails01"];
+
     self.railsNode = [SKSpriteNode spriteNodeWithTexture:railsTexture];
     self.railsNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
     [self addChild:self.railsNode];
@@ -34,6 +36,8 @@
     [self.railsNode runAction:[SKAction repeatActionForever:railsAnimation]];
     
     
+    
+    coinNodes = [NSMutableArray new];
     
     CoinNode* coinNode = [CoinNode new];
     coinNode.position = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
@@ -54,7 +58,48 @@
     self.chulzTrainNode.position = CGPointMake(view.frame.size.width/2, 240);
     [self addChild:self.chulzTrainNode];
     
+
     [self didUpdateDrivingdirection];
+    
+    [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self spawnTree];
+    }];
+
+}
+
+-(void) spawnBush {
+    
+}
+
+-(void) spawnTree {
+    
+    NSInteger horizonPosition = 208;
+    
+    
+    
+    SKTexture* tree = [SKTexture textureWithImageNamed:@"specialtree"];
+    
+    SKSpriteNode* treenode = [SKSpriteNode spriteNodeWithTexture:tree];
+    treenode.position = CGPointMake(self.view.frame.size.width/3.5, self.frame.size.height - horizonPosition - 32 - 16);
+    
+    SKAction* scaleX = [SKAction resizeToWidth:0 duration:0];
+    SKAction* scaleY = [SKAction resizeToHeight:0 duration:0];
+    
+    [treenode runAction:scaleX];
+    [treenode runAction:scaleY];
+    
+    [self addChild:treenode];
+    
+    SKAction* move = [SKAction moveTo:CGPointMake(-100, -50) duration:13];
+    scaleX = [SKAction resizeToWidth:130 duration:13];
+    scaleY = [SKAction resizeToHeight:130 duration:13];
+    
+    move.timingMode = SKActionTimingEaseIn;
+    
+    [treenode runAction:move];
+    [treenode runAction:scaleX];
+    [treenode runAction:scaleY];
+    
 }
 
 -(void) jumpRight {
@@ -83,6 +128,7 @@
 }
 
 -(void) jumpLeft {
+
     
     if(self.drivingDirecton != DrivingDirectionLeft) {
         
@@ -146,6 +192,40 @@
     [self.chulzTrainNode runAction:followSquare];
     
     [AudioEngine playWallSmashSound];
+}
+
+-(void)update:(NSTimeInterval)currentTime {
+    [super update:currentTime];
+    
+    NSInteger horizonPosition = 208;
+    NSInteger railsWidth = 10;
+    NSInteger railsSpacing = 6;
+    
+    // Only spawn new object every X steps
+    NSInteger coinSpawnInterval = 5;
+    if ((NSInteger)currentTime % coinSpawnInterval == 0) {
+        NSInteger railIndex = [Game randomFrom:0 to:2];
+        
+        CoinNode *newCoinNode = [CoinNode new];
+        
+        // Calculate initial position and size
+        NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
+        newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
+        newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
+        
+        // Add to index
+        [self addChild:newCoinNode];
+        [coinNodes addObject:newCoinNode];
+    }
+    
+    // Update position or remove hidden
+    for (CoinNode* coinNode in coinNodes) {
+        if (coinNode.position.y < 0) {
+            [coinNodes removeObject:coinNode];
+            [coinNode removeFromParent];
+        }
+    }
+    
 }
 
 @end

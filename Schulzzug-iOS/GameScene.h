@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "BackgroundParallax.h"
+#import "CoinNode.h"
+
 
 typedef enum {
     DrivingDirectionForward,
@@ -15,14 +17,15 @@ typedef enum {
     DrivingDirectionRight
 } DrivingDirection;
 
-@interface GameScene : SKScene
+@interface GameScene : SKScene {
+    NSMutableArray<CoinNode*>* coinNodes;
+}
 
 @property(nonatomic, strong) SKSpriteNode* railsNode;
 @property(nonatomic, strong) SKSpriteNode* chulzTrainNode;
 @property(nonatomic, strong) SKSpriteNode* skyNode;
 @property(nonatomic, strong) BackgroundParallax* backgroundParallax;
 @property DrivingDirection drivingDirecton;
-
 
 
 -(void) jumpRight;
