@@ -14,12 +14,12 @@
 
 +(void) playJumpSound {
     AMGSoundManager* soundManager = [AMGSoundManager sharedManager];
-    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"jump" ofType:@"mp3"] withName:@"jump" inLine:@"jump" withVolume:1 andRepeatCount:0 fadeDuration:0 withCompletitionHandler:nil];
+    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"blubb" ofType:@"wav"] withName:@"jump" inLine:@"jump" withVolume:3 andRepeatCount:0 fadeDuration:0 withCompletitionHandler:nil];
 }
 
 +(void) playWallSmashSound {
     AMGSoundManager* soundManager = [AMGSoundManager sharedManager];
-    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"wall_smash" ofType:@"wav"] withName:@"wall_smash" inLine:@"wall_smash" withVolume:1 andRepeatCount:0 fadeDuration:0 withCompletitionHandler:nil];
+    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"wall_smash" ofType:@"wav"] withName:@"wall_smash" inLine:@"wall_smash" withVolume:2 andRepeatCount:0 fadeDuration:0 withCompletitionHandler:nil];
 }
 
 +(void) playCoinCollectSound {

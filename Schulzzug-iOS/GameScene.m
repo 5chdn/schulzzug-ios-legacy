@@ -53,9 +53,6 @@
     
     coinNodes = [NSMutableArray new];
     
-    CoinNode* coinNode = [CoinNode new];
-    coinNode.position = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
-    [self addChild:coinNode];
     
     
     SKTexture* skyTexture = [SKTexture textureWithImageNamed:@"sky"];
@@ -93,6 +90,10 @@
         [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
     }];
     
+    [NSTimer scheduledTimerWithTimeInterval:2.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self spawnEntityWithName:@"coin" onSide:SpawnSideLane1];
+    }];
+    
 }
 
 -(void) spawnEntityWithName:(NSString*) name onSide:(SpawnSide) spawnSide {
@@ -100,29 +101,40 @@
     SKTexture* texture = [SKTexture textureWithImageNamed:name];
     
     CGFloat spawnX, spawnY, targetX, targetY;
-    spawnY = self.frame.size.height - horizonPosition - 32 - 16;
-    targetY = -50;
+    spawnY = self.frame.size.height - horizonPosition;
+    targetY = -200;
     spawnX = 0;
     targetX = 0;
     
+    NSString* nodeName = @"";
+    
     if(spawnSide == SpawnSideLeft) {
-        spawnX = self.view.frame.size.width/3.5;
-        targetX = -150;
+        spawnX = self.view.frame.size.width/2.5;
+        targetX = -300;
     } else if(spawnSide == SpawnSideRight) {
-        spawnX = self.view.frame.size.width-(self.view.frame.size.width/3.5);
-        targetX = self.view.frame.size.width+150;
+        spawnX = self.view.frame.size.width-(self.view.frame.size.width/2.5);
+        targetX = self.view.frame.size.width+300;
     } else if(spawnSide == SpawnSideLane1) {
         spawnX = self.view.frame.size.width/2;
         targetX = self.view.frame.size.width/2;
+        nodeName = @"lane1";
     } else {
         return;
     }
     
-    SKSpriteNode* node = [SKSpriteNode spriteNodeWithTexture:texture];
-    node.position = CGPointMake(spawnX, spawnY);
+    SKSpriteNode* node;
+    if([name isEqualToString:@"coin"]) {
+        node = [CoinNode new];
+    } else {
+        node = [SKSpriteNode spriteNodeWithTexture:texture];
+    }
     
-    SKAction* scaleX = [SKAction resizeToWidth:0 duration:0];
-    SKAction* scaleY = [SKAction resizeToHeight:0 duration:0];
+    
+    node.position = CGPointMake(spawnX, spawnY);
+    node.name = nodeName;
+    
+    __block SKAction* scaleX = [SKAction resizeToWidth:texture.size.width*0.1 duration:0];
+    __block SKAction* scaleY = [SKAction resizeToHeight:texture.size.height*0.1 duration:0];
     
     [node runAction:scaleX];
     [node runAction:scaleY];
@@ -131,27 +143,32 @@
     [self addChild:node];
     
     
-    SKAction* speed = [SKAction customActionWithDuration:13 actionBlock:^(SKNode * _Nonnull node, CGFloat elapsedTime) {
-        float t = 13 - elapsedTime;
+    int duration = 13;
+    
+    SKAction* speed = [SKAction customActionWithDuration:duration actionBlock:^(SKNode * _Nonnull node, CGFloat elapsedTime) {
+        float t = duration - (elapsedTime+1);
+        float s = ((1/t)/10);
         
-        if(t != 0) {
-            float velocity = 1 / t;
-            
-        }
+        CGPoint newPosition = CGPointMake(spawnX + ((targetX-spawnX) * s), spawnY + ((targetY-spawnY) * s));
+        node.position = newPosition;
         
+        scaleX = [SKAction resizeToWidth:2*s*texture.size.width duration:0];
+        scaleY = [SKAction resizeToHeight:2*s*texture.size.height duration:0];
         
-        
+        [node runAction:scaleX];
+        [node runAction:scaleY];
     }];
+    [node runAction:speed];
     
-    SKAction* move = [SKAction moveTo:CGPointMake(targetX, targetY) duration:13];
-    scaleX = [SKAction resizeToWidth:texture.size.width duration:13];
-    scaleY = [SKAction resizeToHeight:texture.size.height duration:13];
-    
-    move.timingMode = SKActionTimingEaseIn;
-    
-    [node runAction:move];
-    [node runAction:scaleX];
-    [node runAction:scaleY];
+    //    SKAction* move = [SKAction moveTo:CGPointMake(targetX, targetY) duration:13];
+    //    scaleX = [SKAction resizeToWidth:texture.size.width duration:13];
+    //    scaleY = [SKAction resizeToHeight:texture.size.height duration:13];
+    //
+    //    move.timingMode = SKActionTimingEaseIn;
+    //
+    //    [node runAction:move];
+    //    [node runAction:scaleX];
+    //    [node runAction:scaleY];
     
 }
 
@@ -163,12 +180,12 @@
         
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
         [bezierPath moveToPoint: CGPointMake(0, 0)];
-        [bezierPath addQuadCurveToPoint:CGPointMake(140, 0) controlPoint:CGPointMake(70, 50)];
+        [bezierPath addQuadCurveToPoint:CGPointMake(120, 0) controlPoint:CGPointMake(60, 50)];
         SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.2];
         followSquare.timingMode = SKActionTimingEaseInEaseOut;
         [self.chulzTrainNode runAction:followSquare];
         
-        [AudioEngine playWallSmashSound];
+        [AudioEngine playJumpSound];
     }
     
     if(self.drivingDirecton == DrivingDirectionForward) {
@@ -189,7 +206,7 @@
         
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
         [bezierPath moveToPoint: CGPointMake(0, 0)];
-        [bezierPath addQuadCurveToPoint:CGPointMake(-140, 0) controlPoint:CGPointMake(-70, 50)];
+        [bezierPath addQuadCurveToPoint:CGPointMake(-120, 0) controlPoint:CGPointMake(-60, 50)];
         
         
         
@@ -197,7 +214,7 @@
         followSquare.timingMode = SKActionTimingEaseInEaseOut;
         [self.chulzTrainNode runAction:followSquare];
         
-        [AudioEngine playWallSmashSound];
+        [AudioEngine playJumpSound];
     }
     
     if(self.drivingDirecton == DrivingDirectionForward) {
@@ -244,49 +261,72 @@
     SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.5];
     [self.chulzTrainNode runAction:followSquare];
     
-    [AudioEngine playWallSmashSound];
+    [AudioEngine playJumpSound];
 }
 
 -(void)update:(NSTimeInterval)currentTime {
     [super update:currentTime];
     
     /*NSInteger horizonPosition = 208;
-    NSInteger railsWidth = 10;
-    NSInteger railsSpacing = 6;
-    
-    // Only spawn new object every X steps
-    NSInteger coinSpawnInterval = 5;
-    if ((NSInteger)currentTime % coinSpawnInterval == 0) {
-        NSInteger railIndex = [Game randomFrom:0 to:2];
-        
-        CoinNode *newCoinNode = [CoinNode new];
-        
-        // Calculate initial position and size
-        NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
-        newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
-        newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
-        
-        // Add to index
-        [self addChild:newCoinNode];
-        [coinNodes addObject:newCoinNode];
-    }
-    
-    // Update position or remove hidden
-    for (CoinNode* coinNode in coinNodes) {
-        if (coinNode.position.y < 0) {
-            [coinNodes removeObject:coinNode];
-            [coinNode removeFromParent];
-        }
-    }*/
+     NSInteger railsWidth = 10;
+     NSInteger railsSpacing = 6;
+     
+     // Only spawn new object every X steps
+     NSInteger coinSpawnInterval = 5;
+     if ((NSInteger)currentTime % coinSpawnInterval == 0) {
+     NSInteger railIndex = [Game randomFrom:0 to:2];
+     
+     CoinNode *newCoinNode = [CoinNode new];
+     
+     // Calculate initial position and size
+     NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
+     newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
+     newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
+     
+     // Add to index
+     [self addChild:newCoinNode];
+     [coinNodes addObject:newCoinNode];
+     }
+     
+     // Update position or remove hidden
+     for (CoinNode* coinNode in coinNodes) {
+     if (coinNode.position.y < 0) {
+     [coinNodes removeObject:coinNode];
+     [coinNode removeFromParent];
+     }
+     }*/
     
     for(SKNode* node in self.children) {
         if([node.name isEqualToString:@"front"]) {
             
+        } else if([node.name isEqualToString:@"lane1"]) {
+            if(self.drivingDirecton == DrivingDirectionForward) {
+                if(self.chulzTrainNode.position.y - 10 < node.position.y && self.chulzTrainNode.position.y + 10 > node.position.y) {
+                    
+                    if([node isKindOfClass:[CoinNode class]]) {
+                        [AudioEngine playCoinCollectSound];
+                        [self.gameSceneDelegate didCollectCoin];
+                    } else {
+                        [AudioEngine playWallSmashSound];
+                        [self.gameSceneDelegate didCrashTrumpWall];
+                    }
+                    
+                    [node removeFromParent];
+                    
+                }
+            }
         } else {
             node.zPosition = self.frame.size.height - node.frame.origin.y;
+            
+        }
+        
+        if(node.frame.origin.y > self.frame.size.height) {
+            [node removeFromParent];
         }
         
     }
+    
+    
     
 }
 
