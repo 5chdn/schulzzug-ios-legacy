@@ -146,14 +146,14 @@
     int duration = 13;
     
     SKAction* speed = [SKAction customActionWithDuration:duration actionBlock:^(SKNode * _Nonnull node, CGFloat elapsedTime) {
-        float t = elapsedTime;
-        float s = 0.006*(t*t);
+        float t = duration - (elapsedTime+1);
+        float s = ((1/t)/10);
         
-                CGPoint newPosition = CGPointMake(spawnX + ((targetX-spawnX) * s), spawnY + ((targetY-spawnY) * s));
+        CGPoint newPosition = CGPointMake(spawnX + ((targetX-spawnX) * s), spawnY + ((targetY-spawnY) * s));
         node.position = newPosition;
         
-        scaleX = [SKAction resizeToWidth:s*texture.size.width duration:0];
-        scaleY = [SKAction resizeToHeight:s*texture.size.height duration:0];
+        scaleX = [SKAction resizeToWidth:2*s*texture.size.width duration:0];
+        scaleY = [SKAction resizeToHeight:2*s*texture.size.height duration:0];
         
         [node runAction:scaleX];
         [node runAction:scaleY];
@@ -316,6 +316,10 @@
         } else {
             node.zPosition = self.frame.size.height - node.frame.origin.y;
             
+        }
+        
+        if(node.frame.origin.y > self.frame.size.height) {
+            [node removeFromParent];
         }
         
     }
