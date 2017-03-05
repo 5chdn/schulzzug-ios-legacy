@@ -10,6 +10,7 @@
 #import "CoinNode.h"
 #import "Schulzzug_iOS-Swift.h"
 #import "AudioEngine.h"
+#import "CloudNode.h"
 
 @implementation GameScene
 
@@ -48,11 +49,6 @@
     
     SKAction* railsAnimation = [SKAction animateWithTextures:railTextures timePerFrame:0.1];
     [self.railsNode runAction:[SKAction repeatActionForever:railsAnimation]];
-    
-    
-    
-    coinNodes = [NSMutableArray new];
-    
     
     
     SKTexture* skyTexture = [SKTexture textureWithImageNamed:@"sky"];
@@ -94,6 +90,26 @@
         [self spawnEntityWithName:@"coin" onSide:SpawnSideLane1];
     }];
     
+    [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self spawnCloud];
+    }];
+
+}
+
+-(void) spawnCloud {
+        if (arc4random_uniform(100) > 20) {
+            return;
+        }
+    
+        NSInteger horizonPosition = 208;
+        CGFloat yPosition = self.frame.size.height - arc4random_uniform(horizonPosition);
+    
+        CloudNode *cloudNode = [CloudNode new];
+        cloudNode.position = CGPointMake(-50, yPosition);
+        [self addChild:cloudNode];
+    
+        SKAction *moveAction = [SKAction moveToX:self.frame.size.width + 100 duration: arc4random_uniform(15)];
+        [cloudNode runAction:moveAction];
 }
 
 -(void) spawnEntityWithName:(NSString*) name onSide:(SpawnSide) spawnSide {
@@ -267,35 +283,7 @@
 -(void)update:(NSTimeInterval)currentTime {
     [super update:currentTime];
     
-    /*NSInteger horizonPosition = 208;
-     NSInteger railsWidth = 10;
-     NSInteger railsSpacing = 6;
-     
-     // Only spawn new object every X steps
-     NSInteger coinSpawnInterval = 5;
-     if ((NSInteger)currentTime % coinSpawnInterval == 0) {
-     NSInteger railIndex = [Game randomFrom:0 to:2];
-     
-     CoinNode *newCoinNode = [CoinNode new];
-     
-     // Calculate initial position and size
-     NSInteger initialXPosition = self.frame.size.width/2 - railsWidth - railsSpacing + railIndex * (railsWidth + railsSpacing);
-     newCoinNode.position = CGPointMake(initialXPosition, self.frame.size.height - horizonPosition - 32 - 16);
-     newCoinNode.size = CGSizeMake(railsWidth, railsWidth);
-     
-     // Add to index
-     [self addChild:newCoinNode];
-     [coinNodes addObject:newCoinNode];
-     }
-     
-     // Update position or remove hidden
-     for (CoinNode* coinNode in coinNodes) {
-     if (coinNode.position.y < 0) {
-     [coinNodes removeObject:coinNode];
-     [coinNode removeFromParent];
-     }
-     }*/
-    
+    // Lane
     for(SKNode* node in self.children) {
         if([node.name isEqualToString:@"front"]) {
             
@@ -320,7 +308,7 @@
             
         }
         
-        if(node.frame.origin.y > self.frame.size.height) {
+        if(node.frame.origin.y > self.frame.size.height || node.frame.origin.x > self.frame.size.width) {
             [node removeFromParent];
         }
         

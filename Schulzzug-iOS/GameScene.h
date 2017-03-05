@@ -32,9 +32,7 @@ typedef enum {
     
 } SpawnSide;
 
-@interface GameScene : SKScene {
-    NSMutableArray<CoinNode*>* coinNodes;
-}
+@interface GameScene : SKScene 
 
 @property(nonatomic, strong) SKSpriteNode* railsNode;
 @property(nonatomic, strong) SKSpriteNode* chulzTrainNode;
