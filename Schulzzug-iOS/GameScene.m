@@ -97,17 +97,30 @@
     
     [NSTimer scheduledTimerWithTimeInterval:4 repeats:YES block:^(NSTimer * _Nonnull timer) {
         
-        int random = arc4random_uniform(3);
-        if(random == 0) {
-            [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane0];
-        } else if(random == 1) {
-            [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
-        } else if(random == 2) {
-            [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane2];
+        
+        if(arc4random_uniform(2) == 0) {
+            
+            int random = arc4random_uniform(3);
+            if(random == 0) {
+                [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane0];
+            } else if(random == 1) {
+                [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
+            } else if(random == 2) {
+                [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane2];
+            }
+        } else {
+            int random = arc4random_uniform(3);
+            if(random == 0) {
+                [self spawnEntityWithName:@"afd-wall" onSide:SpawnSideLane0];
+            } else if(random == 1) {
+                [self spawnEntityWithName:@"afd-wall" onSide:SpawnSideLane1];
+            } else if(random == 2) {
+                [self spawnEntityWithName:@"afd-wall" onSide:SpawnSideLane2];
+            }
         }
-        
-        
     }];
+    
+    
     
     [NSTimer scheduledTimerWithTimeInterval:2.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         
@@ -122,6 +135,16 @@
         
     }];
     
+    [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        int random = arc4random_uniform(2);
+        if(random == 0) {
+            [self spawnEntityWithName:@"Trump" onSide:SpawnSideRight];
+        } else if(random == 1) {
+            [self spawnEntityWithName:@"Petry" onSide:SpawnSideRight];
+        }
+        
+    }];
+    
     [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [self spawnCloud];
     }];
@@ -130,22 +153,24 @@
         [[self gameSceneDelegate] didUpdateDistance];
     }];
     
+    
+    
 }
 
 -(void) spawnCloud {
-        if (arc4random_uniform(100) > 20) {
-            return;
-        }
+    if (arc4random_uniform(100) > 20) {
+        return;
+    }
     
-        NSInteger horizonPosition = 208;
-        CGFloat yPosition = self.frame.size.height - arc4random_uniform(horizonPosition);
+    NSInteger horizonPosition = 208;
+    CGFloat yPosition = self.frame.size.height - arc4random_uniform(horizonPosition);
     
-        CloudNode *cloudNode = [CloudNode new];
-        cloudNode.position = CGPointMake(-50, yPosition);
-        [self addChild:cloudNode];
+    CloudNode *cloudNode = [CloudNode new];
+    cloudNode.position = CGPointMake(-50, yPosition);
+    [self addChild:cloudNode];
     
-        SKAction *moveAction = [SKAction moveToX:self.frame.size.width + 100 duration: arc4random_uniform(15)];
-        [cloudNode runAction:moveAction];
+    SKAction *moveAction = [SKAction moveToX:self.frame.size.width + 100 duration: arc4random_uniform(15)];
+    [cloudNode runAction:moveAction];
 }
 
 -(void) spawnEntityWithName:(NSString*) name onSide:(SpawnSide) spawnSide {
