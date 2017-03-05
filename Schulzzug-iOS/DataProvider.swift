@@ -27,16 +27,23 @@ struct LeaderboardItem: ResponseObjectSerializable, ResponseCollectionSerializab
 }
 
 
-class DataProvider {
+@objc class DataProvider: NSObject {
     static let `default` = DataProvider()
     
     fileprivate let keychain = Keychain(service: "Schulzzug")
     
-    init() {
+    override init() {
+        super.init()
         Router.token = keychain["token"] ?? ""
     }
     
-    func register(username: String) {
+    @objc func hasToken() -> Bool {
+        return keychain["token"] != nil
+    }
+    
+    @objc func register(username: String) {
+        guard keychain["token"] == nil else { return }
+        
         let parameters = [
             "user": username
         ]
@@ -59,20 +66,20 @@ class DataProvider {
         }
     }
     
-    func startGame(_ completion: @escaping (Result<Any>) -> ()) {
+    @objc func startGame(_ completion: @escaping (Bool) -> ()) {
         let route = Router.startGame
         Alamofire.request(route).responseJSON { (response: DataResponse<Any>) in
-            completion(response.result)
+            completion(response.result.isSuccess)
         }
     }
     
-    func updateScore(_ score: Int, _ completion: @escaping (Result<Any>) -> ()) {
+    @objc func updateScore(_ score: Int, _ completion: @escaping (Bool) -> ()) {
         let parameters = [
             "score": score
         ]
         let route = Router.updateScore(parameters)
         Alamofire.request(route).responseJSON { (response: DataResponse<Any>) in
-            completion(response.result)
+            completion(response.result.isSuccess)
         }
     }
 }

@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "AudioEngine.h"
 
+
 @interface GameViewController ()
 
 @end
@@ -28,6 +29,11 @@
     [self.spriteKitView presentScene:self.gameScene];
     
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    
+    [[DataProvider default] startGame:^(BOOL success) {
+        
+    }];
+    
     [super viewWillAppear:animated];
 }
 
@@ -68,6 +74,12 @@
 
 -(void)didCrashTrumpWall {
     
+}
+
+-(void)didFinish {
+    [[DataProvider default] updateScore:score :^(BOOL success) {
+        
+    }];
 }
 
 
