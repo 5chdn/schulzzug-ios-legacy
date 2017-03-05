@@ -387,6 +387,8 @@
                         [self.gameSceneDelegate didCollectCoin];
                         [node removeFromParent];
                         
+                        [[[UINotificationFeedbackGenerator alloc] init] notificationOccurred:UINotificationFeedbackTypeSuccess];
+                        
                     } else {
                         [AudioEngine playWallSmashSound];
                         [self.gameSceneDelegate didCrashTrumpWall];
@@ -405,7 +407,7 @@
                         [node runAction:rotate];
                         
                         
-                        
+                        [[[UIImpactFeedbackGenerator alloc] init] impactOccurred];
                         
                         
                         SKAction* invisible = [SKAction fadeAlphaBy:-1 duration:0.1];
