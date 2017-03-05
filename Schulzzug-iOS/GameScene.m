@@ -356,10 +356,28 @@
                 if([node isKindOfClass:[CoinNode class]]) {
                     [AudioEngine playCoinCollectSound];
                     [self.gameSceneDelegate didCollectCoin];
+                    [node removeFromParent];
                     
                 } else {
                     [AudioEngine playWallSmashSound];
                     [self.gameSceneDelegate didCrashTrumpWall];
+                    
+                    [node removeAllActions];
+                    
+                    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                    [bezierPath moveToPoint: CGPointMake(0, 0)];
+                    [bezierPath addQuadCurveToPoint:CGPointMake(400, 0) controlPoint:CGPointMake(200, 100)];
+                    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.4];
+                    followSquare.timingMode = SKActionTimingEaseInEaseOut;
+                    [node runAction:followSquare];
+                    node.name = @"bashed";
+                    
+                    SKAction *rotate = [SKAction rotateByAngle:3 duration:0.4];
+                    [node runAction:rotate];
+                    
+                    
+                    
+                    
                     
                     SKAction* invisible = [SKAction fadeAlphaBy:-1 duration:0.1];
                     SKAction* visible = [SKAction fadeAlphaBy:1 duration:0.1];
@@ -371,7 +389,7 @@
                     [self.chulzTrainNode runAction:repeatBlinking];
                 }
                 
-                [node removeFromParent];
+                
             }
         }
         

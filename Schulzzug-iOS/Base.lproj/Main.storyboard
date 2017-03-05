@@ -176,8 +176,25 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQX-Xo-u6q" customClass="SKView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkW-Wo-UrR">
+                                        <rect key="frame" x="300" y="0.0" width="75" height="97"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="BIv-an-AbS"/>
+                                            <constraint firstAttribute="height" constant="97" id="dKL-0J-YOY"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="choot"/>
+                                        <connections>
+                                            <action selector="chooter:" destination="fxy-Vu-tjA" eventType="touchUpInside" id="7Sr-m7-6Zz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pkW-Wo-UrR" secondAttribute="trailing" id="ROk-jF-rbe"/>
+                                    <constraint firstItem="pkW-Wo-UrR" firstAttribute="top" secondItem="cQX-Xo-u6q" secondAttribute="top" id="zAc-rz-qyc"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="QCR-s4-JDg" appends="YES" id="ciN-Xy-adA"/>
                                     <outletCollection property="gestureRecognizers" destination="DNE-qL-WOW" appends="YES" id="S4Q-qk-dAd"/>
@@ -310,6 +327,7 @@
     </scenes>
     <resources>
         <image name="button" width="258" height="144"/>
+        <image name="choot" width="338" height="347"/>
         <image name="launch" width="750" height="1334"/>
         <image name="score_panel" width="375" height="72"/>
         <image name="select_character" width="719" height="1280"/>

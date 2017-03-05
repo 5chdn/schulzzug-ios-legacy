@@ -73,8 +73,15 @@
 }
 
 -(void)didUpdateDistance {
-    distance += 1;
-    self.distanceLabel.text = [NSString stringWithFormat:@"%i", (int)distance];
+    distance += 19;
+    
+    if(distance < 1000) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%i m", (int)distance];
+    } else {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", distance/1000.f];
+    }
+    
+    
 }
 
 -(void)didCrashTrumpWall {
@@ -88,6 +95,9 @@
     }];
 }
 
+- (IBAction)chooter:(id)sender {
+    [AudioEngine chootChoot];
+}
 
 /*
 #pragma mark - Navigation

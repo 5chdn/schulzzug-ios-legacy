@@ -29,7 +29,7 @@
 
 +(void) chootChoot {
     AMGSoundManager* soundManager = [AMGSoundManager sharedManager];
-    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"choot_choot" ofType:@"mp3"] withName:@"choot_choot" inLine:@"choot_choot" withVolume:1 andRepeatCount:0 fadeDuration:0 withCompletitionHandler:nil];
+    [soundManager playAudio:[[NSBundle mainBundle] pathForResource:@"whistle" ofType:@"wav"] withName:@"choot_choot" inLine:@"choot_choot" withVolume:1 andRepeatCount:0 fadeDuration:0 withCompletitionHandler:nil];
 }
 
 +(void) startBackgroundMusic {
