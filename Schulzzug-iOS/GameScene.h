@@ -14,6 +14,7 @@
 - (void)didCollectCoin;
 - (void)didCrashTrumpWall;
 - (void)didUpdateDistance;
+- (void)didFinish;
 @end
 
 typedef enum {

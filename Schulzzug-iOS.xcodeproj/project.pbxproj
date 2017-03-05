@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83536A951E6BD81A005214ED /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83536A941E6BD81A005214ED /* RegisterViewController.m */; };
 		83B9587A1E6B42F300B72434 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B958791E6B42F300B72434 /* Alamofire.framework */; };
 		83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9587C1E6B436000B72434 /* DataProvider.swift */; };
 		83B9587F1E6B456700B72434 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9587E1E6B456700B72434 /* Router.swift */; };
@@ -55,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83536A931E6BD81A005214ED /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		83536A941E6BD81A005214ED /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		83B958711E6B1F1800B72434 /* Schulzzug-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Schulzzug-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		83B958771E6B42E300B72434 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Alamofire; path = Carthage/Build/iOS/Alamofire.framework/Alamofire; sourceTree = "<group>"; };
 		83B958791E6B42F300B72434 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				83B958841E6B509A00B72434 /* ResponseObjectSerializable.swift */,
 				83B958821E6B4B4700B72434 /* LeaderboardViewController.swift */,
 				83B958861E6B540200B72434 /* UIAlertControllerExtension.swift */,
+				83536A931E6BD81A005214ED /* RegisterViewController.h */,
+				83536A941E6BD81A005214ED /* RegisterViewController.m */,
 			);
 			path = "Schulzzug-iOS";
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				83B958871E6B540200B72434 /* UIAlertControllerExtension.swift in Sources */,
 				863A534B1E6B0D7C00D89F24 /* ViewController.m in Sources */,
 				83B9587F1E6B456700B72434 /* Router.swift in Sources */,
+				83536A951E6BD81A005214ED /* RegisterViewController.m in Sources */,
 				83B958851E6B509A00B72434 /* ResponseObjectSerializable.swift in Sources */,
 				863A53931E6B961E00D89F24 /* AudioEngine.m in Sources */,
 				83B9587D1E6B436000B72434 /* DataProvider.swift in Sources */,
