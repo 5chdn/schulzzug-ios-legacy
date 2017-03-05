@@ -23,11 +23,25 @@
     self.drivingDirecton = DrivingDirectionForward;
     
     
+    SKTexture* railsBackgroundDirt = [SKTexture textureWithImageNamed:@"dirt"];
+    
+    SKSpriteNode* railsBackgroundDirtNode = [SKSpriteNode spriteNodeWithTexture:railsBackgroundDirt];
+    railsBackgroundDirtNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
+    railsBackgroundDirtNode.name = @"front";
+    [self addChild:railsBackgroundDirtNode];
+    
+    
     SKTexture* railsTexture = [SKTexture textureWithImageNamed:@"rails01"];
     
     self.railsNode = [SKSpriteNode spriteNodeWithTexture:railsTexture];
     self.railsNode.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
+    self.railsNode.name = @"front";
     [self addChild:self.railsNode];
+    
+    
+    
+    
+    
     
     NSArray <SKTexture*>* railTextures = @[[SKTexture textureWithImageNamed:@"rails01"],
                                            [SKTexture textureWithImageNamed:@"rails02"]];
@@ -48,6 +62,7 @@
     
     self.skyNode = [SKSpriteNode spriteNodeWithTexture:skyTexture];
     self.skyNode.anchorPoint = CGPointMake(0.5, 1);
+    self.skyNode.name = @"front";
     self.skyNode.position = CGPointMake(view.frame.size.width/2, view.frame.size.height);
     [self addChild:self.skyNode];
     
@@ -56,21 +71,26 @@
     
     self.chulzTrainNode = [SKSpriteNode spriteNodeWithTexture:zugTexture];
     self.chulzTrainNode.position = CGPointMake(view.frame.size.width/2, 240);
-    self.chulzTrainNode.zPosition = 10;
+    self.chulzTrainNode.zPosition = 1000000;
+    self.chulzTrainNode.name = @"front";
     [self addChild:self.chulzTrainNode];
     
     
     [self didUpdateDrivingdirection];
     
-    [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    [NSTimer scheduledTimerWithTimeInterval:1.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         
         [self spawnEntityWithName:@"specialtree" onSide:SpawnSideLeft];
         
         
     }];
     
-    [NSTimer scheduledTimerWithTimeInterval:4 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [self spawnEntityWithName:@"bush" onSide:SpawnSideRight];
+    }];
+    
+    [NSTimer scheduledTimerWithTimeInterval:4 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self spawnEntityWithName:@"Trump-Wall" onSide:SpawnSideLane1];
     }];
     
 }
@@ -91,6 +111,9 @@
     } else if(spawnSide == SpawnSideRight) {
         spawnX = self.view.frame.size.width-(self.view.frame.size.width/3.5);
         targetX = self.view.frame.size.width+150;
+    } else if(spawnSide == SpawnSideLane1) {
+        spawnX = self.view.frame.size.width/2;
+        targetX = self.view.frame.size.width/2;
     } else {
         return;
     }
@@ -206,8 +229,7 @@
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint: CGPointMake(0, 0)];
     [bezierPath addQuadCurveToPoint:CGPointMake(0, 0) controlPoint:CGPointMake(0, 140)];
-    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.25];
-    followSquare.timingMode = SKActionTimingEaseInEaseOut;
+    SKAction *followSquare = [SKAction followPath:bezierPath.CGPath asOffset:YES orientToPath:NO duration:0.5];
     [self.chulzTrainNode runAction:followSquare];
     
     [AudioEngine playWallSmashSound];
@@ -216,7 +238,7 @@
 -(void)update:(NSTimeInterval)currentTime {
     [super update:currentTime];
     
-    NSInteger horizonPosition = 208;
+    /*NSInteger horizonPosition = 208;
     NSInteger railsWidth = 10;
     NSInteger railsSpacing = 6;
     
@@ -243,6 +265,15 @@
             [coinNodes removeObject:coinNode];
             [coinNode removeFromParent];
         }
+    }*/
+    
+    for(SKNode* node in self.children) {
+        if([node.name isEqualToString:@"front"]) {
+            
+        } else {
+            node.zPosition = self.frame.size.height - node.frame.origin.y;
+        }
+        
     }
     
 }
